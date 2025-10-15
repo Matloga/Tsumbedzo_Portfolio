@@ -1,7 +1,4 @@
 import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-
-const headshot = PlaceHolderImages.find(p => p.id === 'headshot');
 
 export default function AboutSection() {
   return (
@@ -9,15 +6,12 @@ export default function AboutSection() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid gap-12 md:grid-cols-2 md:gap-16 items-center">
           <div className="relative aspect-square max-w-md mx-auto">
-            {headshot && (
-              <Image
-                src={headshot.imageUrl}
-                alt={headshot.description}
-                data-ai-hint={headshot.imageHint}
-                fill
-                className="rounded-lg object-cover shadow-lg"
-              />
-            )}
+            <Image
+              src="/tsumbedzo-matloga.jpg"
+              alt="A professional headshot of Tsumbedzo Matloga."
+              fill
+              className="rounded-lg object-cover shadow-lg"
+            />
           </div>
           <div className="space-y-6">
             <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
