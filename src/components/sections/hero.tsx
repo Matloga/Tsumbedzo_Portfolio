@@ -32,7 +32,7 @@ export default function HeroSection() {
             <div className="absolute w-full max-w-xs sm:max-w-sm md:max-w-md aspect-square rounded-full border-4 border-primary/40 animate-pulse-slow"></div>
             <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md aspect-square rounded-full overflow-hidden shadow-2xl">
               <Image
-                src="/tsumbedzo-matloga.jpg"
+                src="/tsumbedzo-matloga.png"
                 alt="A professional headshot of Tsumbedzo Matloga."
                 data-ai-hint="professional portrait"
                 fill
