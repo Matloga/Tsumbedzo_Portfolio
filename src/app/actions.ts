@@ -1,6 +1,12 @@
 "use server";
 
 import { z } from "zod";
+// 1. (Optional) Install Resend if you want to use it: `npm install resend`
+// import { Resend } from "resend";
+
+// 2. (Optional) Create a new Resend instance.
+// You'll need to create an environment variable for your API key.
+// const resend = new Resend(process.env.RESEND_API_KEY);
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
@@ -35,14 +41,36 @@ export async function submitContactForm(
       success: false,
     };
   }
+  
+  const { name, email, message } = validatedFields.data;
 
-  // Simulate sending an email or saving to DB
-  console.log("Contact form submitted:", validatedFields.data);
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  try {
+    // 3. (Optional) Uncomment the code below to send an email with Resend.
+    // Make sure to replace "your_email@example.com" with your actual email address.
+    /*
+    await resend.emails.send({
+      from: 'onboarding@resend.dev', // This must be a verified domain on Resend
+      to: 'your_email@example.com',
+      subject: `New message from ${name} on your portfolio`,
+      reply_to: email,
+      html: `<p>Name: ${name}</p><p>Email: ${email}</p><p>Message: ${message}</p>`,
+    });
+    */
 
-  return {
-    message: "Thank you! Your message has been sent successfully.",
-    errors: null,
-    success: true,
-  };
+    // The line below is a placeholder. You can remove it when you set up a real email service.
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    return {
+      message: "Thank you! Your message has been sent successfully.",
+      errors: null,
+      success: true,
+    };
+  } catch (error) {
+    console.error("Email sending error:", error);
+    return {
+      message: "Something went wrong. Please try again later.",
+      errors: null,
+      success: false,
+    };
+  }
 }
