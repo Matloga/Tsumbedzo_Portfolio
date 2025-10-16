@@ -6,7 +6,7 @@ const skills = ['HTML5', 'CSS', 'Javascript', 'Node.js', 'React', 'Git', 'Github
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="relative overflow-hidden py-24 sm:py-32 md:py-40 bg-cover bg-center" style={{backgroundImage: "url('/background.jpg')"}}>
+    <section id="hero" className="relative overflow-hidden py-24 sm:py-32 md:py-40 bg-cover bg-center" style={{backgroundImage: "url('/backgroundWallpaper.jpg')"}}>
       <div className="absolute inset-0 bg-background/60 backdrop-blur-sm"></div>
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
