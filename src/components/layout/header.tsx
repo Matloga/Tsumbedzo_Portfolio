@@ -1,7 +1,11 @@
+"use client";
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -10,6 +14,34 @@ const navLinks = [
 ];
 
 export default function Header() {
+  const [activeSection, setActiveSection] = useState('');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = navLinks.map(link => document.getElementById(link.href.substring(1)));
+      let currentSection = '';
+
+      for (const section of sections) {
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            currentSection = section.id;
+            break;
+          }
+        }
+      }
+
+      if (currentSection) {
+        setActiveSection(currentSection);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
@@ -21,7 +53,10 @@ export default function Header() {
             <Link
               key={link.label}
               href={link.href}
-              className="transition-colors hover:text-primary"
+              className={cn(
+                "transition-colors hover:text-primary",
+                activeSection === link.href.substring(1) && "text-primary"
+              )}
             >
               {link.label}
             </Link>
@@ -52,7 +87,10 @@ export default function Header() {
                     <Link
                       key={link.label}
                       href={link.href}
-                      className="text-lg font-medium transition-colors hover:text-primary"
+                      className={cn(
+                        "text-lg font-medium transition-colors hover:text-primary",
+                         activeSection === link.href.substring(1) && "text-primary"
+                      )}
                     >
                       {link.label}
                     </Link>
