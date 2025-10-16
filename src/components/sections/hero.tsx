@@ -1,35 +1,53 @@
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+
+const skills = ['HTML5', 'CSS', 'Javascript', 'Node.js', 'React', 'Git', 'Github'];
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="py-24 sm:py-32 md:py-40">
-      <div className="container mx-auto text-center px-4 md:px-6">
-        <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-          Tsumbedzo Matloga
-        </h1>
-        <p className="mt-4 text-lg text-primary font-medium md:text-xl">
-          Software Developer
-        </p>
-        <p className="mx-auto mt-6 max-w-[700px] text-muted-foreground md:text-lg">
-          Crafting elegant and efficient solutions through code. Passionate about building modern web applications and creating exceptional user experiences.
-        </p>
-        <div className="mt-8 flex justify-center gap-4">
-          <Button asChild size="lg">
-            <Link href="#contact">Contact Me</Link>
-          </Button>
-          <Button asChild variant="secondary" size="lg">
-            <Link href="#projects">View My Work</Link>
-          </Button>
+    <section id="hero" className="relative overflow-hidden py-24 sm:py-32 md:py-40">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="text-center md:text-left">
+            <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+              <span className="block text-primary">Hello.</span>
+              I'm Tsumbedzo
+            </h1>
+            <p className="mt-4 text-2xl text-white font-medium md:text-3xl">
+              Software Developer
+            </p>
+            <div className="mt-8 flex justify-center md:justify-start gap-4">
+              <Button asChild size="lg">
+                <Link href="#contact">Got a project?</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                 <a href="/Tsumbedzo_Matloga_Resume.pdf" download>My resume</a>
+              </Button>
+            </div>
+          </div>
+
+          <div className="relative flex justify-center items-center">
+            <div className="absolute w-full max-w-xs sm:max-w-sm md:max-w-md aspect-square rounded-full bg-primary/20 animate-pulse"></div>
+            <div className="absolute w-full max-w-xs sm:max-w-sm md:max-w-md aspect-square rounded-full border-4 border-primary/40 animate-pulse-slow"></div>
+            <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md aspect-square rounded-full overflow-hidden shadow-2xl">
+              <Image
+                src="/tsumbedzo-matloga.jpg"
+                alt="A professional headshot of Tsumbedzo Matloga."
+                data-ai-hint="professional portrait"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
         </div>
-        <div className="mt-12 flex justify-center space-x-6">
-          <Link href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <Github className="h-7 w-7 text-muted-foreground transition-colors hover:text-primary" />
-          </Link>
-          <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <Linkedin className="h-7 w-7 text-muted-foreground transition-colors hover:text-primary" />
-          </Link>
+        
+        <div className="mt-24">
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-muted-foreground font-medium">
+            {skills.map((skill) => (
+              <span key={skill}>{skill}</span>
+            ))}
+          </div>
         </div>
       </div>
     </section>

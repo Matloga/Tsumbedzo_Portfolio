@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Download } from 'lucide-react';
+import { Menu } from 'lucide-react';
 
 const navLinks = [
   { href: '#about', label: 'About' },
-  { href: '#skills', label: 'Skills' },
   { href: '#projects', label: 'Projects' },
   { href: '#contact', label: 'Contact' },
 ];
@@ -29,10 +28,9 @@ export default function Header() {
           ))}
         </nav>
         <div className="hidden md:flex items-center space-x-4">
-          <Button asChild>
+          <Button asChild variant="outline">
             <a href="/Tsumbedzo_Matloga_Resume.pdf" download>
-              <Download className="mr-2 h-4 w-4" />
-              Resume
+              My Resume
             </a>
           </Button>
         </div>
@@ -60,10 +58,9 @@ export default function Header() {
                     </Link>
                   ))}
                 </nav>
-                <Button asChild size="lg">
+                <Button asChild size="lg" variant="outline">
                   <a href="/Tsumbedzo_Matloga_Resume.pdf" download>
-                    <Download className="mr-2 h-4 w-4" />
-                    Download Resume
+                    My Resume
                   </a>
                 </Button>
               </div>
