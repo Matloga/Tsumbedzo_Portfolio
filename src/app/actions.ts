@@ -1,11 +1,10 @@
 "use server";
 
 import { z } from "zod";
-// 1. (Optional) Install Resend if you want to use it: `npm install resend`
-// import { Resend } from "resend";
+// 1. Install Resend: npm install resend
+import { Resend } from "resend";
 
-// 2. (Optional) Create a new Resend instance.
-// You'll need to create an environment variable for your API key.
+// 2. Create a new Resend instance and add your API key to .env.local
 // const resend = new Resend(process.env.RESEND_API_KEY);
 
 const contactSchema = z.object({
@@ -45,7 +44,7 @@ export async function submitContactForm(
   const { name, email, message } = validatedFields.data;
 
   try {
-    // 3. (Optional) Uncomment the code below to send an email with Resend.
+    // 3. Uncomment the code below to send an email with Resend.
     // Make sure to replace "your_email@example.com" with your actual email address.
     /*
     await resend.emails.send({
