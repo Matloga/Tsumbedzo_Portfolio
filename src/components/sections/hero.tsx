@@ -1,14 +1,12 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import WaterRippleBackground from "@/components/water-ripple-background";
 
 const skills = ['HTML5', 'CSS', 'Javascript', 'Node.js', 'React', 'Git', 'Github'];
 
 export default function HeroSection() {
   return (
-    <section id="hero" className="relative overflow-hidden py-24 sm:py-32 md:py-40">
-      <WaterRippleBackground />
+    <section id="hero" className="relative overflow-hidden py-24 sm:py-32 md:py-40 bg-background">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="text-center md:text-left">
