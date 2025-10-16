@@ -1,13 +1,15 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import WaterRippleBackground from "@/components/water-ripple-background";
 
 const skills = ['HTML5', 'CSS', 'Javascript', 'Node.js', 'React', 'Git', 'Github'];
 
 export default function HeroSection() {
   return (
     <section id="hero" className="relative overflow-hidden py-24 sm:py-32 md:py-40">
-      <div className="container mx-auto px-4 md:px-6">
+      <WaterRippleBackground />
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="text-center md:text-left">
             <h1 className="font-headline text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
@@ -36,7 +38,7 @@ export default function HeroSection() {
                 alt="A professional headshot of Tsumbedzo Matloga."
                 data-ai-hint="professional portrait"
                 fill
-                className="object-cover"
+                className="object-contain"
               />
             </div>
           </div>

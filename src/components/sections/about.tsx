@@ -1,32 +1,84 @@
 import Image from 'next/image';
+import { Briefcase, CalendarCheck, Mail, MapPin, GraduationCap, Phone } from 'lucide-react';
+import { Progress } from '../ui/progress';
+
+const details = [
+  { icon: <Briefcase size={20} />, label: 'Experience', value: '1+ Years' },
+  { icon: <GraduationCap size={20} />, label: 'Degree', value: 'Bachelor of Science' },
+  { icon: <MapPin size={20} />, label: 'Based In', value: 'Polokwane, SA' },
+  { icon: <Mail size={20} />, label: 'Email', value: 'tsumbedzomatloga@gmail.com' },
+  { icon: <Phone size={20} />, label: 'Phone', value: '(+27) 67-279-5363' },
+  { icon: <CalendarCheck size={20} />, label: 'Availability', value: 'Open to Work' },
+];
+
+const skills = [
+  { name: 'React & Next.js', value: 95 },
+  { name: 'Node.js & Express', value: 90 },
+  { name: 'UI/UX & Figma', value: 88 },
+  { name: 'MongoDB & PostgreSQL', value: 85 },
+  { name: 'Docker & AWS', value: 80 },
+];
 
 export default function AboutSection() {
   return (
     <section id="about" className="py-16 sm:py-24 bg-card/50">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid gap-12 md:grid-cols-2 md:gap-16 items-center">
-          <div className="relative aspect-square max-w-md mx-auto">
-            <Image
-              src="/tsumbedzo-matloga.jpg"
-              alt="A professional headshot of Tsumbedzo Matloga."
-              fill
-              className="rounded-lg object-cover shadow-lg"
-            />
-          </div>
-          <div className="space-y-6">
+        <div className="text-center mb-12">
             <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
-              About Me
+                About Me
             </h2>
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                Hello! I'm Tsumbedzo, a dedicated software developer with a knack for turning complex problems into beautiful, intuitive designs. My journey in tech started with a fascination for how things work, and it has evolved into a full-fledged passion for software development.
-              </p>
-              <p>
-                I specialize in front-end development, with a strong command of React and its ecosystem. I thrive on building responsive, scalable, and accessible web applications. I'm also proficient in back-end technologies like Node.js, allowing me to build full-stack solutions.
-              </p>
-              <p>
-                When I'm not coding, you can find me exploring the latest technology trends, contributing to open-source projects, or enjoying a good cup of coffee. I believe in continuous learning and am always looking for new challenges to grow my skills.
-              </p>
+        </div>
+        <div className="grid gap-12 md:grid-cols-3 md:gap-16 items-start">
+          <div className="md:col-span-1 space-y-6">
+            <div className="relative aspect-square max-w-sm mx-auto">
+                <Image
+                src="/tsumbedzo-matloga.jpg"
+                alt="A professional headshot of Tsumbedzo Matloga."
+                fill
+                className="rounded-lg object-contain shadow-lg"
+                />
+            </div>
+            <div className="space-y-4 text-muted-foreground text-center md:text-left">
+              <h3 className="font-headline text-2xl font-bold">Tsumbedzo Matloga</h3>
+              <p className="text-primary font-medium">Full Stack Developer</p>
+            </div>
+          </div>
+          <div className="md:col-span-2 space-y-12">
+            <div className="space-y-4">
+                <h3 className="font-headline text-2xl font-bold text-primary">Bio</h3>
+                <p className='text-muted-foreground'>
+                    Hello! I'm Tsumbedzo, a dedicated software developer with a knack for turning complex problems into beautiful, intuitive designs. My journey in tech started with a fascination for how things work, and it has evolved into a full-fledged passion for software development. I specialize in front-end development, with a strong command of React and its ecosystem. I thrive on building responsive, scalable, and accessible web applications. I'm also proficient in back-end technologies like Node.js, allowing me to build full-stack solutions.
+                </p>
+            </div>
+
+            <div className="space-y-4">
+                <h3 className="font-headline text-2xl font-bold text-primary">Details</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {details.map(detail => (
+                        <div key={detail.label} className="flex items-center gap-4 p-4 rounded-lg bg-background/50">
+                            <div className="text-primary flex-shrink-0">{detail.icon}</div>
+                            <div>
+                                <span className='text-sm text-muted-foreground'>{detail.label}</span>
+                                <p className='font-semibold'>{detail.value}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            
+            <div className="space-y-4">
+                <h3 className="font-headline text-2xl font-bold text-primary">Core Skills</h3>
+                <div className="space-y-4">
+                    {skills.map(skill => (
+                        <div key={skill.name}>
+                            <div className="flex justify-between items-center mb-1">
+                                <span className="font-medium">{skill.name}</span>
+                                <span className="text-sm text-primary font-semibold">{skill.value}%</span>
+                            </div>
+                            <Progress value={skill.value} />
+                        </div>
+                    ))}
+                </div>
             </div>
           </div>
         </div>
