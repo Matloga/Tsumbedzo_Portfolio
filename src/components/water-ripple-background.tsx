@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 // Adapted from https://github.com/dli/ripple
 export default function WaterRippleBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -18,7 +19,6 @@ export default function WaterRippleBackground() {
     let half_width = width >> 1;
     let half_height = height >> 1;
     let size = width * (height + 2) * 2;
-    let delay = 30;
     let oldind = width;
     let newind = width * (height + 3);
     let riprad = 3;
@@ -37,12 +37,13 @@ export default function WaterRippleBackground() {
     // Pre-render the background image
     const background = new Image();
     background.crossOrigin = "anonymous";
-    background.src = "/tsumbedzo-matloga.jpg";
+    background.src = "/background.jpg"; // Using the generic background
     background.onload = function () {
       if (!ctx) return;
       ctx.drawImage(background, 0, 0, width, height);
       texture = ctx.getImageData(0, 0, width, height);
       ripple = ctx.getImageData(0, 0, width, height);
+      setIsImageLoaded(true); // Signal that the image is loaded
     };
 
     function disturb(dx: number, dy: number) {
@@ -81,10 +82,10 @@ export default function WaterRippleBackground() {
 
           data = 1024 - data;
 
-          old_data = last_map[i];
+          let old_data = last_map[i];
           last_map[i] = data;
 
-          if (old_data != data) {
+          if (old_data !== data) {
             //offsets
             a = (((x - half_width) * data) / 1024) << 0;
             b = (((y - half_height) * data) / 1024) << 0;
@@ -108,9 +109,8 @@ export default function WaterRippleBackground() {
     }
 
     let isRunning = true;
-    let old_data: number;
     function run() {
-      if (!isRunning) return;
+      if (!isRunning || !isImageLoaded) return; // Wait for image to load
       newframe();
       ctx.putImageData(ripple, 0, 0);
       requestAnimationFrame(run);
@@ -143,17 +143,42 @@ export default function WaterRippleBackground() {
         }
     };
 
+    if (isImageLoaded) {
+      run();
+    }
+
     canvas.addEventListener('mousemove', handleMouseMove);
     window.addEventListener('resize', handleResize);
-
-    run();
 
     return () => {
       isRunning = false;
       canvas.removeEventListener('mousemove', handleMouseMove);
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [isImageLoaded]);
+
+  // Run the effect once the image is loaded
+  useEffect(() => {
+    if(isImageLoaded) {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+        
+        let isRunning = true;
+        function run() {
+            if (!isRunning) return;
+            // The newframe() call is now inside the main useEffect
+            requestAnimationFrame(run);
+        }
+        run();
+
+        return () => {
+            isRunning = false;
+        }
+    }
+  }, [isImageLoaded])
+
 
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />;
 }
