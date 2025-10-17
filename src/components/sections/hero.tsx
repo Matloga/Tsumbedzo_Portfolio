@@ -7,6 +7,9 @@ import Link from "next/link";
 const allSkills = ['Next.js', 'TypeScript', 'Node.js', 'Java', 'Spring', 'Tailwind CSS', 'Git'];
 const skillsToDisplay = [...allSkills, ...allSkills]; // Duplicate for seamless loop
 
+const titles = ["Software Engineer", "Software Developer"];
+const titlesToDisplay = [...titles, ...titles, ...titles, ...titles];
+
 export default function HeroSection() {
   return (
     <section id="hero" className="relative overflow-hidden py-24 sm:py-32 md:py-40">
@@ -27,9 +30,15 @@ export default function HeroSection() {
               <span className="block text-primary">Hello.</span>
               I'm Tsumbedzo
             </h1>
-            <p className="mt-4 text-2xl text-white font-medium md:text-3xl">
-              Software Developer
-            </p>
+            <div className="mt-4 h-10 overflow-hidden">
+                <div className="flex animate-scroll w-max gap-x-8">
+                    {titlesToDisplay.map((title, index) => (
+                    <span key={index} className="text-2xl text-white font-medium md:text-3xl">
+                        {title}
+                    </span>
+                    ))}
+                </div>
+            </div>
             <div className="mt-8 flex justify-center md:justify-start gap-4">
               <Button asChild size="lg">
                 <Link href="#contact">Got a project?</Link>
