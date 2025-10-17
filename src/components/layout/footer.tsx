@@ -11,11 +11,11 @@ export default function Footer() {
           </p>
         </div>
         <div className="flex items-center space-x-4">
-          <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <Link href="https://github.com/Matloga" target="_blank" rel="noopener noreferrer">
             <Github className="h-6 w-6 text-muted-foreground hover:text-primary transition-colors" />
             <span className="sr-only">GitHub</span>
           </Link>
-          <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+          <Link href="https://www.linkedin.com/in/matloga-tsumbedzo-a44724343" target="_blank" rel="noopener noreferrer">
             <Linkedin className="h-6 w-6 text-muted-foreground hover:text-primary transition-colors" />
             <span className="sr-only">LinkedIn</span>
           </Link>
