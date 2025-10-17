@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { Briefcase, CalendarCheck, Mail, MapPin, GraduationCap, Phone } from 'lucide-react';
-import { Progress } from '../ui/progress';
 
 const details = [
   { icon: <Briefcase size={20} />, label: 'Experience', value: '1+ Years' },
@@ -10,17 +9,6 @@ const details = [
   { icon: <Mail size={20} />, label: 'Email', value: 'tsumbedzomatloga@gmail.com' },
   { icon: <Phone size={20} />, label: 'Phone', value: '0763664740 & 0751412268' },
   { icon: <CalendarCheck size={20} />, label: 'Availability', value: 'Open to Work' },
-];
-
-const skills = [
-  'React & Next.js',
-  'Node.js & Express',
-  'UI/UX & Figma',
-  'MongoDB & PostgreSQL',
-  'Docker & AWS',
-  'TypeScript',
-  'JavaScript',
-  'HTML5 & CSS3'
 ];
 
 export default function AboutSection() {
@@ -55,33 +43,23 @@ export default function AboutSection() {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
-              <div className="space-y-4">
-                  <h3 className="font-headline text-2xl font-bold text-primary">Details</h3>
-                  <div className="space-y-4">
-                      {details.map(detail => (
-                          <div key={detail.label} className="flex items-start gap-4">
-                              <div className="text-primary flex-shrink-0 mt-1">{detail.icon}</div>
-                              <div className='break-words'>
-                                  <span className='text-sm text-muted-foreground'>{detail.label}</span>
-                                  {detail.label === 'Email' ? (
-                                      <a href={`mailto:${detail.value}`} className='font-semibold block hover:underline'>{detail.value}</a>
-                                  ) : (
-                                      <p className='font-semibold'>{detail.value}</p>
-                                  )}
-                              </div>
-                          </div>
-                      ))}
-                  </div>
-              </div>
-              <div className="space-y-4">
-                  <h3 className="font-headline text-2xl font-bold text-primary">Core Skills</h3>
-                  <ul className="list-disc list-inside text-muted-foreground space-y-2">
-                    {skills.map(skill => (
-                      <li key={skill}>{skill}</li>
+            <div className="space-y-4">
+                <h3 className="font-headline text-2xl font-bold text-primary">Details</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                    {details.map(detail => (
+                        <div key={detail.label} className="flex items-start gap-4">
+                            <div className="text-primary flex-shrink-0 mt-1">{detail.icon}</div>
+                            <div className='break-words'>
+                                <span className='text-sm text-muted-foreground'>{detail.label}</span>
+                                {detail.label === 'Email' ? (
+                                    <a href={`mailto:${detail.value}`} className='font-semibold block hover:underline'>{detail.value}</a>
+                                ) : (
+                                    <p className='font-semibold'>{detail.value}</p>
+                                )}
+                            </div>
+                        </div>
                     ))}
-                  </ul>
-              </div>
+                </div>
             </div>
           </div>
         </div>
