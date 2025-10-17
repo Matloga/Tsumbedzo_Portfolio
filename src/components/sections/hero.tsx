@@ -1,10 +1,29 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
 
-const skills = ['Next.js', 'TypeScript', 'Node.js', 'Java', 'Spring', 'Tailwind CSS', 'Git'];
+const allSkills = ['Next.js', 'TypeScript', 'Node.js', 'Java', 'Spring', 'Tailwind CSS', 'Git'];
 
 export default function HeroSection() {
+  const [displayedSkills, setDisplayedSkills] = useState(allSkills.slice(0, 3));
+  const [currentIndex, setCurrentIndex] = useState(3);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDisplayedSkills(prevSkills => {
+        const newSkills = [...prevSkills.slice(1), allSkills[currentIndex]];
+        setCurrentIndex(prevIndex => (prevIndex + 1) % allSkills.length);
+        return newSkills;
+      });
+    }, 2000); // Change skill every 2 seconds
+
+    return () => clearInterval(interval);
+  }, [currentIndex]);
+
   return (
     <section id="hero" className="relative overflow-hidden py-24 sm:py-32 md:py-40">
       <div className="absolute inset-0">
@@ -52,11 +71,21 @@ export default function HeroSection() {
           </div>
         </div>
         
-        <div className="mt-24">
+        <div className="mt-24 h-8">
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-muted-foreground font-medium">
-            {skills.map((skill) => (
-              <span key={skill}>{skill}</span>
-            ))}
+            <AnimatePresence>
+              {displayedSkills.map((skill) => (
+                 <motion.span
+                    key={skill}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20, transition: { duration: 0.2 } }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {skill}
+                  </motion.span>
+              ))}
+            </AnimatePresence>
           </div>
         </div>
       </div>
