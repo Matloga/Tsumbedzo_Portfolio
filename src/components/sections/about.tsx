@@ -4,7 +4,8 @@ import { Progress } from '../ui/progress';
 
 const details = [
   { icon: <Briefcase size={20} />, label: 'Experience', value: '1+ Years' },
-  { icon: <GraduationCap size={20} />, label: 'Degree', value: 'Bachelor of Science' },
+  { icon: <GraduationCap size={20} />, label: 'BSc', value: 'Mathematical Sciences' },
+  { icon: <GraduationCap size={20} />, label: 'BSc Honours', value: 'Computer Sciences' },
   { icon: <MapPin size={20} />, label: 'Based In', value: 'Polokwane, SA' },
   { icon: <Mail size={20} />, label: 'Email', value: 'tsumbedzomatloga@gmail.com' },
   { icon: <Phone size={20} />, label: 'Phone', value: '(+27) 67-279-5363' },
