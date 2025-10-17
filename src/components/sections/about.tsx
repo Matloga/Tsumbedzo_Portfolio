@@ -6,9 +6,9 @@ const details = [
   { icon: <Briefcase size={20} />, label: 'Experience', value: '1+ Years' },
   { icon: <GraduationCap size={20} />, label: 'BSc', value: 'Mathematical Sciences' },
   { icon: <GraduationCap size={20} />, label: 'BSc Honours', value: 'Computer Sciences' },
-  { icon: <MapPin size={20} />, label: 'Based In', value: 'Fourways, Johannesburg, SA' },
+  { icon: <MapPin size={20} />, label: 'Based In', value: '3266, Milkweed Street, Riverside View 2191, Ext 35, Fourways' },
   { icon: <Mail size={20} />, label: 'Email', value: 'tsumbedzomatloga@gmail.com' },
-  { icon: <Phone size={20} />, label: 'Phone', value: '(+27) 67-279-5363' },
+  { icon: <Phone size={20} />, label: 'Phone', value: '0763664740 & 0751412268' },
   { icon: <CalendarCheck size={20} />, label: 'Availability', value: 'Open to Work' },
 ];
 
