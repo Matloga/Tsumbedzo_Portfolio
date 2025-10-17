@@ -54,11 +54,11 @@ export default function AboutSection() {
 
             <div className="space-y-4">
                 <h3 className="font-headline text-2xl font-bold text-primary">Details</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {details.map(detail => (
-                        <div key={detail.label} className="flex items-center gap-4 p-4 rounded-lg bg-background/50">
-                            <div className="text-primary flex-shrink-0">{detail.icon}</div>
-                            <div>
+                        <div key={detail.label} className="flex items-start gap-4 p-4 rounded-lg bg-background/50">
+                            <div className="text-primary flex-shrink-0 mt-1">{detail.icon}</div>
+                            <div className='break-all'>
                                 <span className='text-sm text-muted-foreground'>{detail.label}</span>
                                 <p className='font-semibold'>{detail.value}</p>
                             </div>
