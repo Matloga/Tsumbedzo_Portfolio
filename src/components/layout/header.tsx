@@ -6,6 +6,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { ThemeToggle } from '../theme-toggle';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -63,13 +64,15 @@ export default function Header() {
           ))}
         </nav>
         <div className="hidden md:flex items-center space-x-4">
+          <ThemeToggle />
           <Button asChild variant="outline">
             <a href="/Tsumbedzo_Matloga_Resume.pdf" download>
               My Resume
             </a>
           </Button>
         </div>
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-4">
+          <ThemeToggle />
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
