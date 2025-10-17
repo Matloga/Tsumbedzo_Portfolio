@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Tsumbedzo's Portfolio",
   description: 'A portfolio for Tsumbedzo Matloga, Software Developer.',
   icons: {
-    icon: '/icon.png',
+    icon: '/favicon.png',
   }
 };
 
