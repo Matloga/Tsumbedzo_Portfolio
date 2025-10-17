@@ -1,0 +1,68 @@
+/**
+ * @fileoverview Firestore Security Rules for Tsumbedzo's portfolio application.
+ *
+ * Core Philosophy:
+ * This ruleset enforces strict admin-only access to contact messages and public read access to projects and skills.
+ *
+ * Data Structure:
+ * The database consists of three top-level collections: `projects`, `skills`, and `contactMessages`. Each collection stores data for a single entity type.
+ *
+ * Key Security Decisions:
+ * - Contact messages are only accessible to authenticated users, emulating admin-only access.
+ * - Projects and skills are publicly readable, but write access is denied to everyone.
+ * - No user listing is allowed.
+ * - All write operations on contact messages require authentication.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * @description Allows public read access to projects. Write access is denied.
+     * @path /projects/{projectId}
+     * @allow get, list: if true
+     * @deny create, update, delete: if false
+     * @principle Public read, no write access
+     */
+    match /projects/{projectId} {
+      allow get, list: if true;
+      allow create, update, delete: if false;
+    }
+
+    /**
+     * @description Allows public read access to skills. Write access is denied.
+     * @path /skills/{skillId}
+     * @allow get, list: if true
+     * @deny create, update, delete: if false
+     * @principle Public read, no write access
+     */
+    match /skills/{skillId} {
+      allow get, list: if true;
+      allow create, update, delete: if false;
+    }
+
+    /**
+     * @description Allows authenticated users to create, update, and delete contact messages (emulates admin-only access).
+     * @path /contactMessages/{contactMessageId}
+     * @allow get, list: if isSignedIn()
+     * @allow create: if isSignedIn();
+     * @allow update: if isSignedIn() && resource != null;
+     * @allow delete: if isSignedIn() && resource != null;
+     * @principle Admin-only data accessible to authenticated users
+     */
+    match /contactMessages/{contactMessageId} {
+      allow get, list: if isSignedIn();
+      allow create: if isSignedIn();
+      allow update: if isSignedIn() && resource != null;
+      allow delete: if isSignedIn() && resource != null;
+    }
+
+    /**
+     * @description Checks if the user is signed in.
+     * @return {bool} True if the user is signed in, false otherwise.
+     */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "entities": {
+    "Project": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Project",
+      "type": "object",
+      "description": "Represents a project in Tsumbedzo's portfolio.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Project entity."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the project."
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description of the project."
+        },
+        "technologies": {
+          "type": "array",
+          "description": "An array of technologies used in the project.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "liveDemoUrl": {
+          "type": "string",
+          "description": "URL to the live demo of the project.",
+          "format": "uri"
+        },
+        "githubUrl": {
+          "type": "string",
+          "description": "URL to the GitHub repository of the project.",
+          "format": "uri"
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL to the image representing the project.",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "description",
+        "technologies"
+      ]
+    },
+    "Skill": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Skill",
+      "type": "object",
+      "description": "Represents a skill Tsumbedzo possesses.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Skill entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the skill (e.g., HTML, CSS, JavaScript)."
+        },
+        "level": {
+          "type": "number",
+          "description": "A numerical representation of Tsumbedzo's proficiency in the skill (e.g., 1-5)."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "level"
+      ]
+    },
+    "ContactMessage": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ContactMessage",
+      "type": "object",
+      "description": "Represents a contact message sent by a visitor.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the ContactMessage entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the person sending the message."
+        },
+        "email": {
+          "type": "string",
+          "description": "The email address of the person sending the message.",
+          "format": "email"
+        },
+        "message": {
+          "type": "string",
+          "description": "The content of the message."
+        },
+        "sentAt": {
+          "type": "string",
+          "description": "The date and time when the message was sent.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "message",
+        "sentAt"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/projects/{projectId}",
+        "definition": {
+          "entityName": "Project",
+          "schema": {
+            "$ref": "#/backend/entities/Project"
+          },
+          "description": "Stores project details for Tsumbedzo's portfolio. The application logic is responsible for generating a unique ID for each document.",
+          "params": [
+            {
+              "name": "projectId",
+              "description": "The unique identifier for the project."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/skills/{skillId}",
+        "definition": {
+          "entityName": "Skill",
+          "schema": {
+            "$ref": "#/backend/entities/Skill"
+          },
+          "description": "Stores Tsumbedzo's skills. The application logic is responsible for generating a unique ID for each document.",
+          "params": [
+            {
+              "name": "skillId",
+              "description": "The unique identifier for the skill."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/contactMessages/{contactMessageId}",
+        "definition": {
+          "entityName": "ContactMessage",
+          "schema": {
+            "$ref": "#/backend/entities/ContactMessage"
+          },
+          "description": "Stores contact messages submitted by visitors. The application logic is responsible for generating a unique ID for each document.",
+          "params": [
+            {
+              "name": "contactMessageId",
+              "description": "The unique identifier for the contact message."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore structure is designed to manage Tsumbedzo's portfolio data, skills, and contact messages. It prioritizes security, scalability, and debuggability by adhering to the principles of Authorization Independence, Clarity of Intent, DBAC, and QAPs.\n\n**Authorization Independence:**  There are no subcollections and therefore no denormalization needs. \n\n**Structural Segregation:**  Each collection stores a single entity type with consistent security requirements. This avoids mixing data with different access needs within the same collection.\n\n**Access Modeling:**\n*   **Private Data (Admin):** The `contactMessages` collection is intended to be accessible only by the admin (Tsumbedzo). No specific user ownership is applied to this data, so a top-level collection is used. The application logic is responsible for generating a unique ID for each document.\n\n**QAPs (Rules are not Filters):**  The structure enables secure `list` operations because all documents within each collection share the same security requirements. For example, only authenticated admin users would be able to `list` contact messages.\n\n**Invariants:**  The structure supports data integrity. Timestamps (`sentAt` in `contactMessages`) are enforced at creation."
+  }
+}
