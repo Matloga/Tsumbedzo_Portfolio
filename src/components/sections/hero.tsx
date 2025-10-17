@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 
-const skills = ['HTML5', 'CSS', 'Javascript', 'Node.js', 'React', 'Git', 'Github'];
+const skills = ['Next.js', 'TypeScript', 'Node.js', 'Java', 'Spring', 'Tailwind CSS', 'Git'];
 
 export default function HeroSection() {
   return (
