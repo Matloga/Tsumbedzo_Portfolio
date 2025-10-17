@@ -39,7 +39,7 @@ export default function AboutSection() {
             <div className="space-y-4">
                 <h3 className="font-headline text-2xl font-bold text-primary">Bio</h3>
                 <p className='text-muted-foreground'>
-                    Hello! I'm Tsumbedzo, a dedicated software developer with a knack for turning complex problems into beautiful, intuitive designs. My journey in tech started with a fascination for how things work, and it has evolved into a full-fledged passion for software development. I specialize in front-end development, with a strong command of React and its ecosystem. I thrive on building responsive, scalable, and accessible web applications. I'm also proficient in back-end technologies like Node.js, allowing me to build full-stack solutions.
+                    I am a software engineer with expertise in Java, object-oriented design, and backend development. I am skilled in building scalable applications, debugging, and contributing to agile teams. My dedication is to writing clean, efficient, and maintainable code while continuously expanding my knowledge of modern software engineering practices.
                 </p>
             </div>
 
