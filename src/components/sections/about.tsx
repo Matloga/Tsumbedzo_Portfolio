@@ -13,11 +13,14 @@ const details = [
 ];
 
 const skills = [
-  { name: 'React & Next.js', value: 95 },
-  { name: 'Node.js & Express', value: 90 },
-  { name: 'UI/UX & Figma', value: 88 },
-  { name: 'MongoDB & PostgreSQL', value: 85 },
-  { name: 'Docker & AWS', value: 80 },
+  'React & Next.js',
+  'Node.js & Express',
+  'UI/UX & Figma',
+  'MongoDB & PostgreSQL',
+  'Docker & AWS',
+  'TypeScript',
+  'JavaScript',
+  'HTML5 & CSS3'
 ];
 
 export default function AboutSection() {
@@ -52,38 +55,33 @@ export default function AboutSection() {
                 </p>
             </div>
 
-            <div className="space-y-4">
-                <h3 className="font-headline text-2xl font-bold text-primary">Details</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {details.map(detail => (
-                        <div key={detail.label} className="flex items-start gap-4 p-4 rounded-lg bg-background/50">
-                            <div className="text-primary flex-shrink-0 mt-1">{detail.icon}</div>
-                            <div className='break-all'>
-                                <span className='text-sm text-muted-foreground'>{detail.label}</span>
-                                {detail.label === 'Email' ? (
-                                    <a href={`mailto:${detail.value}`} className='font-semibold block hover:underline'>{detail.value}</a>
-                                ) : (
-                                    <p className='font-semibold'>{detail.value}</p>
-                                )}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-            
-            <div className="space-y-4">
-                <h3 className="font-headline text-2xl font-bold text-primary">Core Skills</h3>
-                <div className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+              <div className="space-y-4">
+                  <h3 className="font-headline text-2xl font-bold text-primary">Details</h3>
+                  <div className="space-y-4">
+                      {details.map(detail => (
+                          <div key={detail.label} className="flex items-start gap-4">
+                              <div className="text-primary flex-shrink-0 mt-1">{detail.icon}</div>
+                              <div className='break-words'>
+                                  <span className='text-sm text-muted-foreground'>{detail.label}</span>
+                                  {detail.label === 'Email' ? (
+                                      <a href={`mailto:${detail.value}`} className='font-semibold block hover:underline'>{detail.value}</a>
+                                  ) : (
+                                      <p className='font-semibold'>{detail.value}</p>
+                                  )}
+                              </div>
+                          </div>
+                      ))}
+                  </div>
+              </div>
+              <div className="space-y-4">
+                  <h3 className="font-headline text-2xl font-bold text-primary">Core Skills</h3>
+                  <ul className="list-disc list-inside text-muted-foreground space-y-2">
                     {skills.map(skill => (
-                        <div key={skill.name}>
-                            <div className="flex justify-between items-center mb-1">
-                                <span className="font-medium">{skill.name}</span>
-                                <span className="text-sm text-primary font-semibold">{skill.value}%</span>
-                            </div>
-                            <Progress value={skill.value} />
-                        </div>
+                      <li key={skill}>{skill}</li>
                     ))}
-                </div>
+                  </ul>
+              </div>
             </div>
           </div>
         </div>
