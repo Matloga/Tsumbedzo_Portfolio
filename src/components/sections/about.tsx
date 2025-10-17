@@ -60,7 +60,11 @@ export default function AboutSection() {
                             <div className="text-primary flex-shrink-0 mt-1">{detail.icon}</div>
                             <div className='break-all'>
                                 <span className='text-sm text-muted-foreground'>{detail.label}</span>
-                                <p className='font-semibold'>{detail.value}</p>
+                                {detail.label === 'Email' ? (
+                                    <a href={`mailto:${detail.value}`} className='font-semibold block hover:underline'>{detail.value}</a>
+                                ) : (
+                                    <p className='font-semibold'>{detail.value}</p>
+                                )}
                             </div>
                         </div>
                     ))}
