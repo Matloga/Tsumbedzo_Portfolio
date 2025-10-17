@@ -45,16 +45,16 @@ export default function AboutSection() {
 
             <div className="space-y-4">
                 <h3 className="font-headline text-2xl font-bold text-primary">Details</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
                     {details.map(detail => (
                         <div key={detail.label} className="flex items-start gap-4">
                             <div className="text-primary flex-shrink-0 mt-1">{detail.icon}</div>
-                            <div className='break-words'>
+                            <div className='min-w-0 flex-1'>
                                 <span className='text-sm text-muted-foreground'>{detail.label}</span>
                                 {detail.label === 'Email' ? (
-                                    <a href={`mailto:${detail.value}`} className='font-semibold block hover:underline'>{detail.value}</a>
+                                    <a href={`mailto:${detail.value}`} className='font-semibold block hover:underline break-words'>{detail.value}</a>
                                 ) : (
-                                    <p className='font-semibold'>{detail.value}</p>
+                                    <p className='font-semibold break-words'>{detail.value}</p>
                                 )}
                             </div>
                         </div>
