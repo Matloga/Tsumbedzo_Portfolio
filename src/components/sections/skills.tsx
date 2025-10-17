@@ -2,11 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Atom, Braces, Code, GitBranch, Paintbrush, Server, Type, Wind, Globe } from "lucide-react";
 
 const skills = [
-  { name: 'HTML', icon: <Code /> },
-  { name: 'CSS', icon: <Paintbrush /> },
-  { name: 'JavaScript', icon: <Braces /> },
   { name: 'TypeScript', icon: <Type /> },
-  { name: 'React', icon: <Atom /> },
   { name: 'Next.js', icon: <Globe /> },
   { name: 'Node.js', icon: <Server /> },
   { name: 'Tailwind CSS', icon: <Wind /> },
