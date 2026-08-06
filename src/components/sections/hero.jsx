@@ -23,7 +23,7 @@ export default function HeroSection() {
             <div className="hero-titles">
               <div className="flex animate-scroll w-max gap-x-8">
                 {titlesToDisplay.map((title, index) => (
-                  <span key={index} className="text-2xl text-white font-medium md:text-3xl">
+                  <span key={index} className="text-2xl text-foreground font-medium md:text-3xl">
                     {title}
                   </span>
                 ))}
