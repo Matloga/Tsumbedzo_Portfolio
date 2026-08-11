@@ -1,7 +1,5 @@
-import { useEffect, useState } from 'react';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { ExternalLink, Github } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { ExternalLink, GitFork, Github, Star } from 'lucide-react';
 
 const GITHUB_USERNAME = 'Matloga';
 
@@ -53,6 +51,9 @@ const fallbackProjects = [
     homepage: 'https://tsumbedzo-portfolio.vercel.app',
     image: 'https://opengraph.githubassets.com/1/Matloga/Tsumbedzo_Portfolio',
     fallbackImage: projectImage('Tsumbedzo Portfolio', 0),
+    stars: 0,
+    forks: 0,
+    pushedAt: new Date().toISOString(),
   },
   {
     id: 'project2',
@@ -63,6 +64,9 @@ const fallbackProjects = [
     homepage: null,
     image: 'https://opengraph.githubassets.com/1/Matloga/jobapp',
     fallbackImage: projectImage('jobapp', 1),
+    stars: 0,
+    forks: 0,
+    pushedAt: new Date().toISOString(),
   },
   {
     id: 'project3',
@@ -73,8 +77,26 @@ const fallbackProjects = [
     homepage: null,
     image: 'https://opengraph.githubassets.com/1/Matloga/challenge-front-end-live',
     fallbackImage: projectImage('challenge-front-end-live', 2),
+    stars: 0,
+    forks: 0,
+    pushedAt: new Date().toISOString(),
   },
 ];
+
+function timeAgo(dateString) {
+  const date = new Date(dateString);
+  const diff = Date.now() - date.getTime();
+  if (Number.isNaN(date.getTime()) || diff < 0) return '';
+  const minutes = Math.floor(diff / 60000);
+  if (minutes < 60) return `${minutes}m ago`;
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  if (days < 30) return `${days}d ago`;
+  const months = Math.floor(days / 30);
+  if (months < 12) return `${months}mo ago`;
+  return `${Math.floor(months / 12)}y ago`;
+}
 
 async function fetchReadmeDescription(repo) {
   const branches = [repo.default_branch || 'main', 'master'];
@@ -103,6 +125,39 @@ async function fetchReadmeDescription(repo) {
   return null;
 }
 
+/* --- On-device summary + AI cover image --- */
+
+function generateLocalSummary(repo) {
+  const title = cleanName(repo.name);
+  const desc = (repo.description || '').trim();
+  if (desc) {
+    return `${title} — ${desc}`;
+  }
+  const language = repo.language || 'software';
+  const topics = (repo.topics || []).map((t) => t.toLowerCase());
+  if (topics.length > 0) {
+    return `${title} is a ${language} project focused on ${topics.slice(0, 2).join(' and ')}.`;
+  }
+  return `${title} is a ${language} project I built to solve real-world problems and showcase my development skills.`;
+}
+
+function hashSeed(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash * 31 + str.charCodeAt(i)) | 0;
+  }
+  return Math.abs(hash);
+}
+
+function aiProjectImage(repo, index) {
+  const seed = hashSeed(`${GITHUB_USERNAME}/${repo.name}`);
+  const subject = repo.language || repo.name;
+  const prompt = encodeURIComponent(
+    `Modern developer app cover image for the project "${cleanName(repo.name)}", ${subject} technology theme, sleek software branding, abstract shapes and code elements, flat illustration, vibrant colors, no text, no watermark`
+  );
+  return `https://image.pollinations.ai/prompt/${prompt}?width=800&height=1000&seed=${seed}&nologo=true&model=flux`;
+}
+
 async function fetchProjects() {
   const response = await fetch(
     `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=pushed&per_page=10&type=public`
@@ -114,17 +169,21 @@ async function fetchProjects() {
 
   const projects = await Promise.all(
     repos.map(async (repo, index) => {
-      const desc = await fetchReadmeDescription(repo);
+      const readmeDesc = await fetchReadmeDescription(repo);
+      const description = readmeDesc || generateLocalSummary(repo);
       const tags = [repo.language, ...(repo.topics || [])].filter(Boolean).slice(0, 5);
       return {
         id: `project${index + 1}`,
         title: repo.name,
-        description: desc || (repo.description ? repo.description : `${cleanName(repo.name)} — a project by Tsumbedzo Matloga.`),
+        description,
         tags,
         repoUrl: repo.html_url,
         homepage: repo.homepage,
-        image: `https://opengraph.githubassets.com/1/${GITHUB_USERNAME}/${repo.name}`,
+        image: aiProjectImage(repo, index),
         fallbackImage: projectImage(repo.name, index),
+        stars: repo.stargazers_count || 0,
+        forks: repo.forks_count || 0,
+        pushedAt: repo.pushed_at,
       };
     })
   );
@@ -132,8 +191,38 @@ async function fetchProjects() {
   return projects.length > 0 ? projects : fallbackProjects;
 }
 
+function handleImageError(e, project) {
+  if (project.fallbackImage && e.target.src !== project.fallbackImage) {
+    e.target.src = project.fallbackImage;
+  }
+}
+
+function useReveal() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return ref;
+}
+
 export default function ProjectsSection() {
-  const [projects, setProjects] = useState(fallbackProjects);
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const gridRef = useReveal();
 
   useEffect(() => {
     let cancelled = false;
@@ -143,6 +232,10 @@ export default function ProjectsSection() {
       })
       .catch((err) => {
         console.warn('GitHub fetch failed, using fallback projects:', err);
+        if (!cancelled) setProjects(fallbackProjects);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
       });
     return () => {
       cancelled = true;
@@ -157,56 +250,89 @@ export default function ProjectsSection() {
             My Projects
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground md:text-lg">
-            Auto-synced from my GitHub. Here are my 3 latest public projects.
+            A selection of what I've built — auto-synced from GitHub, with
+            AI-generated covers and summaries for every project.
           </p>
         </div>
-        <div className="projects-grid md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <div key={project.title} className="project-card card">
-              <div className="project-card-img">
+
+        <div ref={gridRef} className="projects-image-cards">
+          {(loading ? [1, 2, 3] : projects).map((project, index) =>
+            loading ? (
+              <article key={project} className="project-image-card is-skeleton reveal-item">
+                <div className="skeleton-bar skeleton-title"></div>
+                <div className="skeleton-bar skeleton-line"></div>
+                <div className="skeleton-bar skeleton-line short"></div>
+              </article>
+            ) : (
+              <article
+                key={project.title}
+                className="project-image-card reveal-item"
+                style={{ transitionDelay: `${index * 80}ms` }}
+              >
                 <img
                   src={project.image}
-                  alt={project.title}
-                  onError={(e) => {
-                    if (project.fallbackImage && e.target.src !== project.fallbackImage) {
-                      e.target.src = project.fallbackImage;
-                    }
-                  }}
+                  alt={`${project.title} cover`}
+                  loading="lazy"
+                  onError={(e) => handleImageError(e, project)}
                 />
-              </div>
-              <div className="card-content flex-grow p-6">
-                <h3 className="project-card-title mb-2">{project.title}</h3>
-                <p className="card-description text-muted-foreground mb-4">{project.description}</p>
-                <div className="project-tags">
-                  {project.tags.map((tag) => (
-                    <Badge key={tag} variant="secondary">{tag}</Badge>
-                  ))}
-                </div>
-              </div>
-              <div className="card-footer p-6 pt-0">
-                <div className="project-card-footer">
-                  <Button asChild variant="outline">
-                    <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-                      <Github className="mr-2 h-4 w-4" /> GitHub
-                    </a>
-                  </Button>
-                  {project.homepage ? (
-                    <Button asChild>
-                      <a href={project.homepage} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
-                      </a>
-                    </Button>
-                  ) : (
-                    <Button asChild variant="secondary">
-                      <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="mr-2 h-4 w-4" /> View Repo
-                      </a>
-                    </Button>
+                <div className="project-image-card-overlay"></div>
+                <div className="project-image-card-content">
+                  <span className="project-image-card-number">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <h3>{project.title}</h3>
+                  <p>{project.description}</p>
+                  {project.tags.length > 0 && (
+                    <div className="project-image-card-tags">
+                      {project.tags.map((tag) => (
+                        <span key={tag}>{tag}</span>
+                      ))}
+                    </div>
                   )}
+                  <div className="project-image-card-stats">
+                    {(project.stars > 0 || project.forks > 0) && (
+                      <span className="project-image-card-stat">
+                        {project.stars > 0 && (
+                          <span className="project-image-card-stat-item">
+                            <Star size={13} fill="currentColor" /> {project.stars}
+                          </span>
+                        )}
+                        {project.forks > 0 && (
+                          <span className="project-image-card-stat-item">
+                            <GitFork size={13} /> {project.forks}
+                          </span>
+                        )}
+                      </span>
+                    )}
+                    {timeAgo(project.pushedAt) && (
+                      <span className="project-image-card-updated">Updated {timeAgo(project.pushedAt)}</span>
+                    )}
+                  </div>
+                  <div className="project-image-card-links">
+                    <a href={project.repoUrl} target="_blank" rel="noopener noreferrer">
+                      <Github size={15} /> GitHub
+                    </a>
+                    {project.homepage && (
+                      <a href={project.homepage} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink size={15} /> Live Demo
+                      </a>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              </article>
+            )
+          )}
+        </div>
+
+        <div className="text-center mt-10">
+          <a
+            href={`https://github.com/${GITHUB_USERNAME}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="projects-view-all"
+          >
+            View all on GitHub <Github size={16} />
+          </a>
         </div>
       </div>
     </section>

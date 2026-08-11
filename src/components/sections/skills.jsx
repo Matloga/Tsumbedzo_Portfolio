@@ -1,36 +1,35 @@
-import {
-  Type, Globe, Server, Wind, GitBranch, Database, Code,
-  Github, Leaf, Binary, Box, IterationCw, LayoutTemplate
-} from 'lucide-react';
+import { Binary, Box, Database, IterationCw, LayoutTemplate } from 'lucide-react';
+
+const devicon = (path) => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${path}`;
 
 const skillCategories = [
   {
     title: 'Languages',
     skills: [
-      { name: 'TypeScript', icon: <Type /> },
-      { name: 'Java', icon: <Code /> },
+      { name: 'TypeScript', img: devicon('typescript/typescript-plain.svg') },
+      { name: 'Java', img: devicon('java/java-original.svg') },
       { name: 'SQL', icon: <Database /> },
     ]
   },
   {
     title: 'Frameworks & Databases',
     skills: [
-      { name: 'Next.js', icon: <Globe /> },
-      { name: 'Node.js', icon: <Server /> },
-      { name: 'Spring', icon: <Leaf /> },
-      { name: 'MySQL', icon: <Database /> },
-      { name: 'SQL Server', icon: <Database /> },
-      { name: 'Tailwind CSS', icon: <Wind /> },
+      { name: 'Next.js', img: devicon('nextjs/nextjs-original.svg') },
+      { name: 'Node.js', img: devicon('nodejs/nodejs-original.svg') },
+      { name: 'Spring', img: devicon('spring/spring-original.svg') },
+      { name: 'MySQL', img: devicon('mysql/mysql-original.svg') },
+      { name: 'SQL Server', img: devicon('microsoftsqlserver/microsoftsqlserver-plain.svg') },
+      { name: 'Tailwind CSS', img: devicon('tailwindcss/tailwindcss-original.svg') },
     ]
   },
   {
     title: 'Tools',
     skills: [
-      { name: 'Git', icon: <GitBranch /> },
-      { name: 'GitHub', icon: <Github /> },
-      { name: 'VS Code', icon: <Code /> },
-      { name: 'IntelliJ', icon: <Code /> },
-      { name: 'Eclipse', icon: <Code /> },
+      { name: 'Git', img: devicon('git/git-original.svg') },
+      { name: 'GitHub', img: devicon('github/github-original.svg') },
+      { name: 'VS Code', img: devicon('vscode/vscode-original.svg') },
+      { name: 'IntelliJ', img: devicon('intellij/intellij-original.svg') },
+      { name: 'Eclipse', img: devicon('eclipse/eclipse-original.svg') },
     ]
   },
   {
@@ -63,7 +62,13 @@ export default function SkillsSection() {
               <div className="skills-grid">
                 {category.skills.map((skill) => (
                   <div key={skill.name} className="skill-card">
-                    <div className="skill-icon">{skill.icon}</div>
+                    <div className="skill-icon">
+                      {skill.img ? (
+                        <img src={skill.img} alt={`${skill.name} logo`} loading="lazy" />
+                      ) : (
+                        skill.icon
+                      )}
+                    </div>
                     <p className="font-semibold">{skill.name}</p>
                   </div>
                 ))}

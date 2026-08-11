@@ -7,6 +7,9 @@
 /dist
 /build
 
+# vite cache
+.vite/
+
 # IDE
 .idea/
 .vscode/
