@@ -577,22 +577,6 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
   padding-top: 0;
 }
 
-/* --- Badge --- */
-.badge {
-  display: inline-flex;
-  align-items: center;
-  border-radius: 9999px;
-  border: 1px solid transparent;
-  padding: 0.125rem 0.625rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  transition: background-color 0.15s;
-}
-.badge-default { background-color: var(--primary); color: var(--primary-foreground); }
-.badge-secondary { background-color: var(--secondary); color: var(--secondary-foreground); }
-.badge-destructive { background-color: var(--destructive); color: var(--destructive-foreground); }
-.badge-outline { color: var(--foreground); }
-
 /* --- Input --- */
 .input {
   display: flex;
@@ -645,15 +629,6 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
   font-weight: 500;
   line-height: 1;
 }
-.label-destructive { color: var(--destructive); }
-
-/* --- Separator --- */
-.separator {
-  flex-shrink: 0;
-  background-color: var(--border);
-}
-.separator-horizontal { height: 1px; width: 100%; }
-.separator-vertical { height: 100%; width: 1px; }
 
 /* --- Sheet (Side Drawer) --- */
 .sheet-overlay {
@@ -948,7 +923,6 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
 
 /* --- Skills --- */
 .skills-section { padding: 4rem 0; }
-.skills-category { margin-bottom: 3rem; }
 .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 .skill-card {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -1099,8 +1073,13 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Space Grotesk', sans-serif; }
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .certificate-card:hover { transform: scale(1.05); box-shadow: 0 10px 15px -3px hsla(var(--primary), 0.2); }
-.certificate-icon { color: var(--primary); margin-bottom: 1rem; }
-.certificate-icon svg { width: 3rem; height: 3rem; }
+.certificate-icon {
+  display: flex; align-items: center; justify-content: center;
+  width: 4.5rem; height: 4.5rem; margin-bottom: 1rem; padding: 0.5rem;
+  background-color: #ffffff; border-radius: 0.75rem;
+  color: var(--primary);
+}
+.certificate-icon img { width: 100%; height: 100%; object-fit: contain; }
 .certificate-name { font-weight: 600; font-size: 1.125rem; margin-bottom: 0.5rem; }
 .certificate-desc { color: var(--muted-foreground); font-size: 0.875rem; }
 

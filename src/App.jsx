@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
@@ -25,6 +26,7 @@ export default function App() {
         <Footer />
       </div>
       <Toaster />
+      <Analytics />
     </ThemeProvider>
   );
 }

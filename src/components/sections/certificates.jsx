@@ -1,33 +1,36 @@
-import { Award, ShieldCheck, Users, Briefcase, Cloud } from 'lucide-react';
+const devicon = (path) => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${path}`;
+
+const universityLogo = 'https://upload.wikimedia.org/wikipedia/en/0/02/University_of_Limpopo_logo.svg';
+const awsLogo = devicon('amazonwebservices/amazonwebservices-plain-wordmark.svg');
 
 const certificates = [
   {
     name: 'Honours Degree',
-    icon: <Award />,
+    img: universityLogo,
     description: 'Bachelor of Science Honours in Computer Science.',
     href: 'https://drive.google.com/file/d/1tsu_748fGVcDXssY8KBmdff0dWjuIYjX/view?usp=drive_link'
   },
   {
     name: 'AWS Certified SysOps Administrator - Associate',
-    icon: <ShieldCheck />,
+    img: awsLogo,
     description: 'Validation of technical expertise in deploying, managing, and operating on the AWS platform.',
     href: 'https://drive.google.com/file/d/1zRTLQ9luB_UIp6jRJIfBmaF_MfZS8ze9/view?usp=drive_link'
   },
   {
     name: 'Class Representative',
-    icon: <Users />,
+    img: universityLogo,
     description: 'Elected to represent and advocate for fellow students\' academic interests and concerns.',
     href: 'https://drive.google.com/file/d/1faY7P4RS-e8IgmgLSRE5Ip91E5F5DU29/view?usp=drive_link'
   },
   {
     name: 'Computer Science Laboratory Assistant',
-    icon: <Briefcase />,
+    img: universityLogo,
     description: 'Provided technical support and guidance to students in a laboratory setting.',
     href: 'https://drive.google.com/file/d/17VfpZopWgE65tZybZ1QoNBFfR50JrD-b/view?usp=drive_link'
   },
   {
     name: 'AWS Certified Cloud Practitioner',
-    icon: <Cloud />,
+    img: awsLogo,
     description: 'Demonstrates a fundamental understanding of AWS Cloud concepts, services, and terminology.',
     href: 'https://drive.google.com/file/d/1lsfO44WSq9RgRhKWZYd0CV7lhR0EHNuy/view?usp=drive_link'
   },
@@ -49,7 +52,9 @@ export default function CertificatesSection() {
           {certificates.map((certificate) => (
             <a key={certificate.name} href={certificate.href} target="_blank" rel="noopener noreferrer" className="certificate-link">
               <div className="certificate-card">
-                <div className="certificate-icon">{certificate.icon}</div>
+                <div className="certificate-icon">
+                  <img src={certificate.img} alt={`${certificate.name} organization logo`} loading="lazy" />
+                </div>
                 <h3 className="certificate-name">{certificate.name}</h3>
                 <p className="certificate-desc">{certificate.description}</p>
               </div>
