@@ -688,41 +688,60 @@ img { max-width: 100%; display: block; }
   padding: 20px 0;
   text-align: center;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  transition: 0.5s linear;
+  transition: all 0.4s ease;
+  border-radius: 8px;
+}
+
+.service-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
 
 .service-icon {
   display: inline-block;
-  width: 70px;
-  height: 70px;
+  width: 80px;
+  height: 80px;
   border: 3px solid var(--accent);
   transform: rotate(45deg);
   margin-bottom: 25px;
   margin-top: 16px;
-  transition: 0.5s linear;
+  transition: all 0.4s ease;
   text-align: center;
-  line-height: 70px;
+  line-height: 80px;
+  background-color: #fff;
 }
 
 .service-icon img {
-  width: 30px;
-  height: 30px;
+  width: 42px;
+  height: 42px;
   transform: rotate(-45deg);
   display: inline-block;
   vertical-align: middle;
+  transition: transform 0.4s ease;
+  object-fit: contain;
+}
+
+.service-box:hover .service-icon {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(252,163,17,0.4);
+  transform: rotate(45deg) scale(1.1);
+}
+.service-box:hover .service-icon img {
+  filter: brightness(0) invert(1);
+  transform: rotate(-45deg) scale(1.15);
 }
 
 .service-box h4 {
   font-size: 16px;
   font-weight: 400;
   margin-bottom: 5px;
+  transition: color 0.3s ease;
 }
 
-.service-box:hover .service-icon {
-  background-color: var(--accent);
-}
-.service-box:hover .service-icon img {
-  filter: brightness(0) invert(1);
+.service-box:hover h4 {
+  color: var(--accent);
+  font-weight: 600;
 }
 
 /* ============================================
