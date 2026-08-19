@@ -1,14 +1,14 @@
 const skills = [
   { name: 'Java', src: '/skills/java.svg' },
-  { name: 'TypeScript', src: 'https://cdn.simpleicons.org/typescript/3178C6' },
-  { name: 'React / Next.js', src: 'https://cdn.simpleicons.org/react/61DAFB' },
-  { name: 'Node.js', src: 'https://cdn.simpleicons.org/nodedotjs/339933' },
-  { name: 'Spring Boot', src: 'https://cdn.simpleicons.org/springboot/6DB33F' },
-  { name: 'SQL / MySQL', src: 'https://cdn.simpleicons.org/mysql/4479A1' },
-  { name: 'Git / GitHub', src: 'https://cdn.simpleicons.org/github/F05032' },
-  { name: 'Tailwind CSS', src: 'https://cdn.simpleicons.org/tailwindcss/06B6D4' },
+  { name: 'TypeScript', src: '/skills/typescript.svg' },
+  { name: 'React / Next.js', src: '/skills/react.svg' },
+  { name: 'Node.js', src: '/skills/nodejs.svg' },
+  { name: 'Spring Boot', src: '/skills/springboot.svg' },
+  { name: 'SQL / MySQL', src: '/skills/mysql.svg' },
+  { name: 'Git / GitHub', src: '/skills/github.svg' },
+  { name: 'Tailwind CSS', src: '/skills/tailwindcss.svg' },
   { name: 'AWS', src: '/skills/aws.svg' },
-  { name: 'Python', src: 'https://cdn.simpleicons.org/python/3776AB' },
+  { name: 'Python', src: '/skills/python.svg' },
 ];
 
 export default function SkillsSection() {
