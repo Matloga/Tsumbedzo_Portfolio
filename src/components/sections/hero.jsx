@@ -17,8 +17,16 @@ export default function HeroSection() {
   const [displayText, setDisplayText] = useState('');
   const [titleIndex, setTitleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [bgIndex, setBgIndex] = useState(0);
+  const [bgIndex, setBgIndex] = useState(() => {
+    const saved = localStorage.getItem('hero-bg');
+    return saved !== null ? Number(saved) : 0;
+  });
   const [previewing, setPreviewing] = useState(false);
+
+  const pickBg = (i) => {
+    setBgIndex(i);
+    localStorage.setItem('hero-bg', i);
+  };
 
   useEffect(() => {
     const currentTitle = titles[titleIndex];
@@ -95,12 +103,18 @@ export default function HeroSection() {
         <i className="bi bi-chevron-double-down"></i>
       </a>
 
+      {!previewing && (
+        <button className="bg-open-btn" onClick={() => setPreviewing(true)}>
+          <i className="bi bi-image"></i>
+        </button>
+      )}
+
       {previewing && (
         <div className="bg-preview-panel">
           <div className="bg-preview-header">
             <span className="bg-preview-title">Choose a Background</span>
             <button onClick={() => setPreviewing(false)} className="bg-preview-close">
-              <i className="bi bi-x-lg"></i> Pick
+              <i className="bi bi-x-lg"></i> Done
             </button>
           </div>
           <div className="bg-preview-grid">
@@ -108,7 +122,7 @@ export default function HeroSection() {
               <button
                 key={bg.src}
                 className={`bg-preview-thumb ${i === bgIndex ? 'active' : ''}`}
-                onClick={() => setBgIndex(i)}
+                onClick={() => pickBg(i)}
               >
                 <img src={bg.src} alt={bg.name} />
                 <span>{bg.name}</span>

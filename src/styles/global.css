@@ -1239,6 +1239,31 @@ img { max-width: 100%; display: block; }
 /* ============================================
    BACKGROUND PREVIEW BAR (temporary)
    ============================================ */
+.bg-open-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9998;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.bg-open-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.1);
+}
+
 .bg-preview-panel {
   position: fixed;
   bottom: 0;
