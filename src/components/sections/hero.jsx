@@ -103,12 +103,6 @@ export default function HeroSection() {
         <i className="bi bi-chevron-double-down"></i>
       </a>
 
-      {!previewing && (
-        <button className="bg-open-btn" onClick={() => setPreviewing(true)}>
-          <i className="bi bi-image"></i>
-        </button>
-      )}
-
       {previewing && (
         <div className="bg-preview-panel">
           <div className="bg-preview-header">
