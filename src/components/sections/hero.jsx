@@ -18,7 +18,7 @@ export default function HeroSection() {
   const [titleIndex, setTitleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [bgIndex, setBgIndex] = useState(0);
-  const [previewing, setPreviewing] = useState(true);
+  const [previewing, setPreviewing] = useState(false);
 
   useEffect(() => {
     const currentTitle = titles[titleIndex];
