@@ -1,17 +1,12 @@
 import { Moon, Sun } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useTheme } from '@/lib/theme-provider';
-import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const [isDark, setIsDark] = useState(theme === 'dark');
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
 
   useEffect(() => {
     if (theme === 'system') {
@@ -24,23 +19,48 @@ export function ThemeToggle() {
     setIsDark(theme === 'dark');
   }, [theme]);
 
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, []);
+
+  const options = [
+    { value: 'light', icon: <Sun size={14} />, label: 'Light' },
+    { value: 'dark', icon: <Moon size={14} />, label: 'Dark' },
+    { value: 'system', icon: <span style={{fontSize:'0.75rem'}}>◐</span>, label: 'System' },
+  ];
+
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" aria-label="Toggle theme">
-          {isDark ? (
-            <Moon className="h-[1.2rem] w-[1.2rem]" />
-          ) : (
-            <Sun className="h-[1.2rem] w-[1.2rem]" />
-          )}
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme('light')}>Light</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>Dark</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>System</DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <div className="theme-toggle-wrap" ref={ref}>
+      <button
+        className="theme-toggle-btn"
+        onClick={() => setOpen(!open)}
+        aria-label="Toggle theme"
+      >
+        {isDark ? <Moon size={16} /> : <Sun size={16} />}
+      </button>
+      {open && (
+        <div className="theme-toggle-dropdown">
+          {options.map((opt) => (
+            <button
+              key={opt.value}
+              className={`theme-toggle-option ${theme === opt.value ? 'active' : ''}`}
+              onClick={() => {
+                setTheme(opt.value);
+                setOpen(false);
+              }}
+            >
+              {opt.icon}
+              <span>{opt.label}</span>
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }

@@ -952,38 +952,67 @@ h1, h2, h3, h4, h5, h6 {
 /* ============================================
    THEME TOGGLE (in sidebar)
    ============================================ */
-.sidebar-footer .dropdown-trigger {
+.theme-toggle-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.theme-toggle-btn {
+  width: 36px;
+  height: 36px;
   background: none;
   border: 1px solid rgba(255,255,255,0.15);
   color: var(--sidebar-text);
-  width: 36px;
-  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s;
-  font-size: 1rem;
+  padding: 0;
 }
 
-.sidebar-footer .dropdown-trigger:hover {
+.theme-toggle-btn:hover {
   color: #fff;
   border-color: var(--sidebar-active);
 }
 
-.sidebar-footer .dropdown-content {
-  background: var(--sidebar-bg);
-  border: 1px solid rgba(255,255,255,0.1);
+.theme-toggle-dropdown {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a2332;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 6px 0;
+  min-width: 120px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  z-index: 200;
 }
 
-.sidebar-footer .dropdown-item {
-  color: var(--sidebar-text);
+.theme-toggle-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 14px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.65);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
 }
 
-.sidebar-footer .dropdown-item:hover {
+.theme-toggle-option:hover {
   background: rgba(20, 157, 221, 0.15);
   color: #fff;
+}
+
+.theme-toggle-option.active {
+  color: var(--sidebar-active);
 }
 
 /* ============================================
