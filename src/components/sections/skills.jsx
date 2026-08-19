@@ -4,7 +4,7 @@ const skills = [
   { name: 'React / Next.js', src: '/skills/react.svg' },
   { name: 'Node.js', src: '/skills/nodejs.svg' },
   { name: 'Spring Boot', src: '/skills/springboot.svg' },
-  { name: 'SQL', src: '/skills/sql.svg' },
+  { name: 'PostgreSQL', src: '/skills/postgresql.svg' },
   { name: 'MySQL', src: '/skills/mysql.svg' },
   { name: 'Git', src: '/skills/git.svg' },
   { name: 'GitHub', src: '/skills/github.svg' },
@@ -27,7 +27,7 @@ export default function SkillsSection() {
             <div className="col-lg-3 col-md-4 col-6" key={skill.name}>
               <div className="service-box">
                 <div className="service-icon">
-                  <img src={skill.src} alt={skill.name} width="30" height="30" />
+                  <img src={skill.src} alt={skill.name} />
                 </div>
                 <h4>{skill.name}</h4>
               </div>
