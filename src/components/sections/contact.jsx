@@ -1,77 +1,72 @@
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Label } from '../ui/label';
-
 const FORMSPREE_ID = 'xzdnddyy';
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="contact-section">
+    <section id="contact" className="contact section">
+      <div className="container section-title">
+        <h2>Contact</h2>
+        <p>Get in touch — I'd love to hear from you.</p>
+      </div>
+
       <div className="container">
-        <Card className="contact-card">
-          <CardHeader className="text-center">
-            <CardTitle className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl">
-              Get In Touch
-            </CardTitle>
-            <CardDescription className="mt-2 text-muted-foreground">
-              Have a question or want to work together? Fill out the form below.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
+        <div className="row gy-4">
+          <div className="col-lg-5">
+            <div className="info-wrap">
+              <div className="info-item">
+                <i className="bi bi-geo-alt"></i>
+                <div>
+                  <h3>Address</h3>
+                  <p>Fourways, South Africa</p>
+                </div>
+              </div>
+              <div className="info-item">
+                <i className="bi bi-envelope"></i>
+                <div>
+                  <h3>Email</h3>
+                  <p>tsumbedzomatloga@gmail.com</p>
+                </div>
+              </div>
+              <div className="info-item">
+                <i className="bi bi-phone"></i>
+                <div>
+                  <h3>Call</h3>
+                  <p>076 366 4740</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-lg-7">
             <form
               action={`https://formspree.io/f/${FORMSPREE_ID}`}
               method="POST"
-              className="contact-form"
+              className="php-email-form"
               target="_blank"
             >
-              <div className="honeypot" aria-hidden="true">
-                <label htmlFor="website">Leave this empty</label>
-                <input id="website" name="website" type="text" tabIndex="-1" autoComplete="off" />
+              <div className="row gy-4">
+                <div className="col-md-6">
+                  <label htmlFor="name-field">Your Name</label>
+                  <input type="text" name="name" id="name-field" className="input" required />
+                </div>
+                <div className="col-md-6">
+                  <label htmlFor="email-field">Your Email</label>
+                  <input type="email" name="email" id="email-field" className="input" required />
+                </div>
+                <div className="col-md-12">
+                  <label htmlFor="subject-field">Subject</label>
+                  <input type="text" name="subject" id="subject-field" className="input" required />
+                </div>
+                <div className="col-md-12">
+                  <label htmlFor="message-field">Message</label>
+                  <textarea name="message" id="message-field" className="textarea" rows="8" required></textarea>
+                </div>
+                <div className="col-md-12 text-center">
+                  <button type="submit" className="btn btn-default">Send Message</button>
+                </div>
               </div>
-
-              <input type="hidden" name="_subject" value="New message from portfolio" />
-              <input type="hidden" name="_captcha" value="false" />
-
-              <div className="form-field">
-                <Label htmlFor="name">Name</Label>
-                <input
-                  className="input"
-                  id="name"
-                  name="name"
-                  placeholder="Your Name"
-                  required
-                  minLength={2}
-                />
-              </div>
-              <div className="form-field">
-                <Label htmlFor="email">Email</Label>
-                <input
-                  className="input"
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="your@email.com"
-                  required
-                />
-              </div>
-              <div className="form-field">
-                <Label htmlFor="message">Message</Label>
-                <textarea
-                  className="textarea"
-                  id="message"
-                  name="message"
-                  placeholder="Your message..."
-                  required
-                  minLength={10}
-                  rows={5}
-                />
-              </div>
-
-              <button type="submit" className="btn btn-default form-submit">
-                Send Message
-              </button>
             </form>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </section>
   );

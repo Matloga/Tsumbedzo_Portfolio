@@ -1,60 +1,43 @@
-import { Briefcase, CalendarCheck, Mail, MapPin, GraduationCap, Phone } from 'lucide-react';
-
-const details = [
-  { icon: <Briefcase size={20} />, label: 'Experience', value: '1+ Years' },
-  { icon: <GraduationCap size={20} />, label: 'BSc', value: 'Mathematical Sciences' },
-  { icon: <GraduationCap size={20} />, label: 'BSc Honours', value: 'Computer Sciences' },
-  { icon: <MapPin size={20} />, label: 'Based In', value: '3266, Milkweed Street, Riverside View 2191, Ext 35, Fourways' },
-  { icon: <Mail size={20} />, label: 'Email', value: 'tsumbedzomatloga@gmail.com' },
-  { icon: <Phone size={20} />, label: 'Phone', value: '0763664740 & 0751412268' },
-  { icon: <CalendarCheck size={20} />, label: 'Availability', value: 'Open to Work' },
-];
-
 export default function AboutSection() {
   return (
-    <section id="about" className="about-section">
-      <div className="container">
-        <div className="text-center mb-12">
-          <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl text-primary">
-            About Me
-          </h2>
-        </div>
-        <div className="about-grid md:grid-cols-3 md:gap-16">
-          <div className="md:col-span-1 space-y-6">
-            <div className="about-photo-wrapper">
-              <img src="/tsumbedzo-matloga.jpg" alt="A professional headshot of Tsumbedzo Matloga." />
-            </div>
-            <div className="space-y-4 text-muted-foreground text-center md:text-left">
-              <h3 className="font-headline text-2xl font-bold">Tsumbedzo Matloga</h3>
-              <p className="text-primary font-medium">Full Stack Developer</p>
-            </div>
-          </div>
-          <div className="md:col-span-2 space-y-12">
-            <div className="space-y-4">
-              <h3 className="font-headline text-2xl font-bold text-primary">Bio</h3>
-              <p className="text-muted-foreground">
-                I am a software engineer with expertise in Java, object-oriented design, and backend development. I am skilled in building scalable applications, debugging, and contributing to agile teams. My dedication is to writing clean, efficient, and maintainable code while continuously expanding my knowledge of modern software engineering practices.
-              </p>
-            </div>
+    <section id="about" className="about section">
+      <div className="container section-title">
+        <h2>About</h2>
+        <p>Passionate software engineer building scalable, efficient applications.</p>
+      </div>
 
-            <div className="space-y-4">
-              <h3 className="font-headline text-2xl font-bold text-primary">Details</h3>
-              <div className="about-details-grid">
-                {details.map(detail => (
-                  <div key={detail.label} className="about-detail-item">
-                    <div className="about-detail-icon">{detail.icon}</div>
-                    <div className="about-detail-text">
-                      <span className="about-detail-label">{detail.label}</span>
-                      {detail.label === 'Email' ? (
-                        <a href={`mailto:${detail.value}`} className="about-detail-value block hover:underline break-all text-sm">{detail.value}</a>
-                      ) : (
-                        <p className="about-detail-value break-words">{detail.value}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
+      <div className="container">
+        <div className="row gy-4 about-row">
+          <div className="col-lg-4">
+            <img src="/tsumbedzo-matloga.jpg" className="about-img" alt="Tsumbedzo Matloga" />
+          </div>
+          <div className="col-lg-8 about-content">
+            <h2>Software Engineer &amp; Developer.</h2>
+            <p className="about-italic">
+              I am a software engineer with expertise in Java, object-oriented design, and backend development.
+              Skilled in building scalable applications, debugging, and contributing to agile teams.
+            </p>
+            <div className="row about-details">
+              <div className="col-lg-6">
+                <ul>
+                  <li><i className="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>BSc Honours Computer Science</span></li>
+                  <li><i className="bi bi-chevron-right"></i> <strong>Website:</strong> <span>tsumbedzo-portfolio.vercel.app</span></li>
+                  <li><i className="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>076 366 4740</span></li>
+                  <li><i className="bi bi-chevron-right"></i> <strong>City:</strong> <span>Fourways, South Africa</span></li>
+                </ul>
+              </div>
+              <div className="col-lg-6">
+                <ul>
+                  <li><i className="bi bi-chevron-right"></i> <strong>Experience:</strong> <span>1+ Years</span></li>
+                  <li><i className="bi bi-chevron-right"></i> <strong>Email:</strong> <span>tsumbedzomatloga@gmail.com</span></li>
+                  <li><i className="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
+                </ul>
               </div>
             </div>
+            <p>
+              My dedication is to writing clean, efficient, and maintainable code while continuously
+              expanding my knowledge of modern software engineering practices.
+            </p>
           </div>
         </div>
       </div>

@@ -1,30 +1,34 @@
 import { Analytics } from '@vercel/analytics/react';
 import { Toaster } from '@/components/ui/toaster';
-import Header from '@/components/layout/header';
-import Footer from '@/components/layout/footer';
+import Sidebar from '@/components/layout/sidebar';
 import { ThemeProvider } from '@/lib/theme-provider';
 import HeroSection from '@/components/sections/hero';
 import AboutSection from '@/components/sections/about';
+import StatsSection from '@/components/sections/stats';
 import SkillsSection from '@/components/sections/skills';
+import ResumeSection from '@/components/sections/resume';
 import ProjectsSection from '@/components/sections/projects';
 import CertificatesSection from '@/components/sections/certificates';
 import ContactSection from '@/components/sections/contact';
+import Footer from '@/components/layout/footer';
+import ScrollToTop from '@/components/scroll-to-top';
 
 export default function App() {
   return (
     <ThemeProvider defaultTheme="system">
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-1">
-          <HeroSection />
-          <AboutSection />
-          <SkillsSection />
-          <ProjectsSection />
-          <CertificatesSection />
-          <ContactSection />
-        </main>
+      <Sidebar />
+      <main className="main-content">
+        <HeroSection />
+        <AboutSection />
+        <StatsSection />
+        <SkillsSection />
+        <ResumeSection />
+        <ProjectsSection />
+        <CertificatesSection />
+        <ContactSection />
         <Footer />
-      </div>
+      </main>
+      <ScrollToTop />
       <Toaster />
       <Analytics />
     </ThemeProvider>

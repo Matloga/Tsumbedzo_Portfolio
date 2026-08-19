@@ -1,80 +1,86 @@
-import { Binary, Box, Database, IterationCw, LayoutTemplate } from 'lucide-react';
+import { useEffect, useRef } from 'react';
 
-const devicon = (path) => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${path}`;
-
-const skillCategories = [
-  {
-    title: 'Languages',
-    skills: [
-      { name: 'TypeScript', img: devicon('typescript/typescript-plain.svg') },
-      { name: 'Java', img: devicon('java/java-original.svg') },
-      { name: 'SQL', icon: <Database /> },
-    ]
-  },
-  {
-    title: 'Frameworks & Databases',
-    skills: [
-      { name: 'Next.js', img: devicon('nextjs/nextjs-original.svg') },
-      { name: 'Node.js', img: devicon('nodejs/nodejs-original.svg') },
-      { name: 'Spring', img: devicon('spring/spring-original.svg') },
-      { name: 'MySQL', img: devicon('mysql/mysql-original.svg') },
-      { name: 'SQL Server', img: devicon('microsoftsqlserver/microsoftsqlserver-plain.svg') },
-      { name: 'Tailwind CSS', img: devicon('tailwindcss/tailwindcss-original.svg') },
-    ]
-  },
-  {
-    title: 'Tools',
-    skills: [
-      { name: 'Git', img: devicon('git/git-original.svg') },
-      { name: 'GitHub', img: devicon('github/github-original.svg') },
-      { name: 'VS Code', img: devicon('vscode/vscode-original.svg') },
-      { name: 'IntelliJ', img: devicon('intellij/intellij-original.svg') },
-      { name: 'Eclipse', img: devicon('eclipse/eclipse-original.svg') },
-    ]
-  },
-  {
-    title: 'Concepts',
-    skills: [
-      { name: 'Data Structures & Algorithms', icon: <Binary /> },
-      { name: 'Object-Oriented Programming', icon: <Box /> },
-      { name: 'Design Patterns', icon: <LayoutTemplate /> },
-      { name: 'Agile', icon: <IterationCw /> },
-    ]
-  },
+const skills = [
+  { name: 'Java', percent: 90 },
+  { name: 'TypeScript', percent: 85 },
+  { name: 'Next.js / React', percent: 85 },
+  { name: 'Node.js', percent: 80 },
+  { name: 'Spring Boot', percent: 75 },
+  { name: 'SQL / MySQL', percent: 80 },
+  { name: 'Git / GitHub', percent: 90 },
+  { name: 'Tailwind CSS', percent: 85 },
 ];
 
 export default function SkillsSection() {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.querySelectorAll('.progress-bar').forEach((bar) => {
+            bar.style.width = bar.getAttribute('data-percent') + '%';
+          });
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="skills" className="skills-section">
-      <div className="container">
-        <div className="text-center mb-12">
-          <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl">
-            My Technical Skills
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-muted-foreground md:text-lg">
-            A collection of technologies I'm proficient in and use to build modern web applications.
-          </p>
-        </div>
-        <div className="space-y-12">
-          {skillCategories.map((category) => (
-            <div key={category.title}>
-              <h3 className="text-center font-headline text-2xl font-bold mb-8 text-primary">{category.title}</h3>
-              <div className="skills-grid">
-                {category.skills.map((skill) => (
-                  <div key={skill.name} className="skill-card">
-                    <div className="skill-icon">
-                      {skill.img ? (
-                        <img src={skill.img} alt={`${skill.name} logo`} loading="lazy" />
-                      ) : (
-                        skill.icon
-                      )}
-                    </div>
-                    <p className="font-semibold">{skill.name}</p>
-                  </div>
-                ))}
+    <section id="skills" className="skills section light-background">
+      <div className="container section-title">
+        <h2>Skills</h2>
+        <p>Technologies and tools I use to build modern applications.</p>
+      </div>
+
+      <div className="container" ref={ref}>
+        <div className="row skills-content">
+          <div className="col-lg-6">
+            {skills.slice(0, Math.ceil(skills.length / 2)).map((skill) => (
+              <div className="progress" key={skill.name}>
+                <span className="skill">
+                  <span>{skill.name}</span>
+                  <i className="val">{skill.percent}%</i>
+                </span>
+                <div className="progress-bar-wrap">
+                  <div
+                    className="progress-bar"
+                    role="progressbar"
+                    data-percent={skill.percent}
+                    aria-valuenow={skill.percent}
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          <div className="col-lg-6">
+            {skills.slice(Math.ceil(skills.length / 2)).map((skill) => (
+              <div className="progress" key={skill.name}>
+                <span className="skill">
+                  <span>{skill.name}</span>
+                  <i className="val">{skill.percent}%</i>
+                </span>
+                <div className="progress-bar-wrap">
+                  <div
+                    className="progress-bar"
+                    role="progressbar"
+                    data-percent={skill.percent}
+                    aria-valuenow={skill.percent}
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
