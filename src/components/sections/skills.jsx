@@ -1,86 +1,36 @@
-import { useEffect, useRef } from 'react';
-
 const skills = [
-  { name: 'Java', percent: 90 },
-  { name: 'TypeScript', percent: 85 },
-  { name: 'Next.js / React', percent: 85 },
-  { name: 'Node.js', percent: 80 },
-  { name: 'Spring Boot', percent: 75 },
-  { name: 'SQL / MySQL', percent: 80 },
-  { name: 'Git / GitHub', percent: 90 },
-  { name: 'Tailwind CSS', percent: 85 },
+  { name: 'Java', src: '/skills/java.svg' },
+  { name: 'TypeScript', src: 'https://cdn.simpleicons.org/typescript/3178C6' },
+  { name: 'React / Next.js', src: 'https://cdn.simpleicons.org/react/61DAFB' },
+  { name: 'Node.js', src: 'https://cdn.simpleicons.org/nodedotjs/339933' },
+  { name: 'Spring Boot', src: 'https://cdn.simpleicons.org/springboot/6DB33F' },
+  { name: 'SQL / MySQL', src: 'https://cdn.simpleicons.org/mysql/4479A1' },
+  { name: 'Git / GitHub', src: 'https://cdn.simpleicons.org/github/F05032' },
+  { name: 'Tailwind CSS', src: 'https://cdn.simpleicons.org/tailwindcss/06B6D4' },
+  { name: 'AWS', src: '/skills/aws.svg' },
+  { name: 'Python', src: 'https://cdn.simpleicons.org/python/3776AB' },
 ];
 
 export default function SkillsSection() {
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.querySelectorAll('.progress-bar').forEach((bar) => {
-            bar.style.width = bar.getAttribute('data-percent') + '%';
-          });
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.2 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section id="skills" className="skills section light-background">
-      <div className="container section-title">
-        <h2>Skills</h2>
-        <p>Technologies and tools I use to build modern applications.</p>
-      </div>
+    <section id="skills" className="skills-section">
+      <div className="container content-box-lg">
+        <div className="section-heading text-center">
+          <h5>What I Do</h5>
+          <h2>My <strong>Skills</strong></h2>
+        </div>
 
-      <div className="container" ref={ref}>
-        <div className="row skills-content">
-          <div className="col-lg-6">
-            {skills.slice(0, Math.ceil(skills.length / 2)).map((skill) => (
-              <div className="progress" key={skill.name}>
-                <span className="skill">
-                  <span>{skill.name}</span>
-                  <i className="val">{skill.percent}%</i>
-                </span>
-                <div className="progress-bar-wrap">
-                  <div
-                    className="progress-bar"
-                    role="progressbar"
-                    data-percent={skill.percent}
-                    aria-valuenow={skill.percent}
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
+        <div className="row">
+          {skills.map(skill => (
+            <div className="col-lg-3 col-md-4 col-6" key={skill.name}>
+              <div className="service-box">
+                <div className="service-icon">
+                  <img src={skill.src} alt={skill.name} width="30" height="30" />
                 </div>
+                <h4>{skill.name}</h4>
               </div>
-            ))}
-          </div>
-          <div className="col-lg-6">
-            {skills.slice(Math.ceil(skills.length / 2)).map((skill) => (
-              <div className="progress" key={skill.name}>
-                <span className="skill">
-                  <span>{skill.name}</span>
-                  <i className="val">{skill.percent}%</i>
-                </span>
-                <div className="progress-bar-wrap">
-                  <div
-                    className="progress-bar"
-                    role="progressbar"
-                    data-percent={skill.percent}
-                    aria-valuenow={skill.percent}
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div>
-                </div>
-              </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

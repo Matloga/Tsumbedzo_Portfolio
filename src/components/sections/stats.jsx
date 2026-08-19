@@ -15,7 +15,6 @@ function Counter({ end, suffix, duration = 2000 }) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !started.current) {
@@ -42,15 +41,15 @@ function Counter({ end, suffix, duration = 2000 }) {
 
 export default function StatsSection() {
   return (
-    <section id="stats" className="stats section">
+    <section id="stats" className="stats-section">
       <div className="container">
-        <div className="row gy-4 stats-row">
+        <div className="row stats-row">
           {stats.map((stat) => (
             <div className="col-lg-3 col-md-6" key={stat.label}>
               <div className="stats-item">
                 <i className={`bi ${stat.icon}`}></i>
                 <Counter end={stat.end} suffix={stat.suffix} />
-                <p><strong>{stat.label}</strong></p>
+                <p>{stat.label}</p>
               </div>
             </div>
           ))}

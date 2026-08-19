@@ -1,7 +1,6 @@
 import { Analytics } from '@vercel/analytics/react';
-import { Toaster } from '@/components/ui/toaster';
-import Sidebar from '@/components/layout/sidebar';
 import { ThemeProvider } from '@/lib/theme-provider';
+import Navbar from '@/components/layout/navbar';
 import HeroSection from '@/components/sections/hero';
 import AboutSection from '@/components/sections/about';
 import StatsSection from '@/components/sections/stats';
@@ -16,8 +15,8 @@ import ScrollToTop from '@/components/scroll-to-top';
 export default function App() {
   return (
     <ThemeProvider defaultTheme="system">
-      <Sidebar />
-      <main className="main-content">
+      <Navbar />
+      <main>
         <HeroSection />
         <AboutSection />
         <StatsSection />
@@ -29,7 +28,6 @@ export default function App() {
         <Footer />
       </main>
       <ScrollToTop />
-      <Toaster />
       <Analytics />
     </ThemeProvider>
   );

@@ -33,29 +33,28 @@ const certificates = [
 
 export default function CertificatesSection() {
   return (
-    <section id="certificates" className="certificates section">
-      <div className="container section-title">
-        <h2>Certificates</h2>
-        <p>Professional certifications and notable achievements.</p>
-      </div>
+    <section id="certificates" className="certificates-section">
+      <div className="container content-box-lg">
+        <div className="section-heading text-center">
+          <h5>Achievements</h5>
+          <h2>My <strong>Certificates</strong></h2>
+        </div>
 
-      <div className="container">
-        <div className="row gy-4 certificates-grid">
-          {certificates.map((cert, index) => (
+        <div className="row">
+          {certificates.map((cert) => (
             <div className="col-lg-4 col-md-6" key={cert.name}>
               <a
                 href={cert.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="service-item"
+                className="cert-service-box"
               >
-                <div className="service-icon">
+                <div className="cert-service-icon">
                   <i className={`bi ${cert.icon}`}></i>
                 </div>
-                <div>
-                  <h4 className="title">{cert.name}</h4>
-                  <p className="description">{cert.description}</p>
-                </div>
+                <h4>{cert.name}</h4>
+                <hr />
+                <p>{cert.description}</p>
               </a>
             </div>
           ))}

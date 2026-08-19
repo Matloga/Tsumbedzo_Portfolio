@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ExternalLink, GitFork, Github, Star } from 'lucide-react';
+import { Github } from 'lucide-react';
 
 const GITHUB_USERNAME = 'Matloga';
 const categories = ['All', 'Web', 'Java', 'AI'];
@@ -77,7 +77,7 @@ async function fetchProjects() {
     repoUrl: repo.html_url,
     homepage: repo.homepage,
     image: `https://opengraph.githubassets.com/1/${GITHUB_USERNAME}/${repo.name}`,
-    fallbackImage: `https://via.placeholder.com/600x400/2563eb/ffffff?text=${encodeURIComponent(repo.name.slice(0, 12))}`,
+    fallbackImage: `https://via.placeholder.com/600x400/14213d/fca311?text=${encodeURIComponent(repo.name.slice(0, 12))}`,
     stars: repo.stargazers_count || 0,
     forks: repo.forks_count || 0,
   }));
@@ -112,13 +112,13 @@ export default function ProjectsSection() {
   const filtered = loading ? [] : projects;
 
   return (
-    <section id="projects" className="portfolio section light-background">
-      <div className="container section-title">
-        <h2>Portfolio</h2>
-        <p>A selection of what I've built — auto-synced from GitHub.</p>
-      </div>
+    <section id="projects" className="projects-section">
+      <div className="container content-box-lg">
+        <div className="section-heading text-center">
+          <h5>My Work</h5>
+          <h2>Featured <strong>Projects</strong></h2>
+        </div>
 
-      <div className="container">
         <div className="portfolio-filters">
           {categories.map((cat) => (
             <button
@@ -131,7 +131,7 @@ export default function ProjectsSection() {
           ))}
         </div>
 
-        <div className="portfolio-grid" ref={gridRef}>
+        <div className="row" ref={gridRef}>
           {(loading ? [1, 2, 3] : filtered).map((project, index) =>
             loading ? (
               <div className="col-lg-4 col-md-6 portfolio-item" key={index}>
@@ -145,7 +145,7 @@ export default function ProjectsSection() {
                 key={project.id}
                 data-category={project.category}
               >
-                <div className="portfolio-content">
+                <div className="portfolio-card">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -172,14 +172,14 @@ export default function ProjectsSection() {
           )}
         </div>
 
-        <div className="text-center mt-10">
+        <div className="text-center" style={{ marginTop: '40px' }}>
           <a
             href={`https://github.com/${GITHUB_USERNAME}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="projects-view-all"
+            className="btn-general btn-yellow"
           >
-            View all on GitHub <Github size={16} />
+            View All on GitHub <Github size={16} style={{ marginLeft: '6px', verticalAlign: 'middle' }} />
           </a>
         </div>
       </div>

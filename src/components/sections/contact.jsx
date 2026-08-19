@@ -2,66 +2,76 @@ const FORMSPREE_ID = 'xzdnddyy';
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="contact section">
-      <div className="container section-title">
-        <h2>Contact</h2>
-        <p>Get in touch — I'd love to hear from you.</p>
-      </div>
-
-      <div className="container">
-        <div className="row gy-4">
-          <div className="col-lg-5">
-            <div className="info-wrap">
-              <div className="info-item">
+    <section id="contact" className="contact-section">
+      <div className="container content-box-md">
+        <div className="row">
+          <div className="col-lg-5" id="contact-left">
+            <div className="section-heading">
+              <h5>Get In Touch</h5>
+              <h2>Contact <strong>Me</strong></h2>
+            </div>
+            <p>Feel free to reach out. I'd love to hear from you.</p>
+            <ul className="office-details">
+              <li>
                 <i className="bi bi-geo-alt"></i>
-                <div>
-                  <h3>Address</h3>
-                  <p>Fourways, South Africa</p>
-                </div>
-              </div>
-              <div className="info-item">
+                <span>Fourways, South Africa</span>
+              </li>
+              <li>
                 <i className="bi bi-envelope"></i>
-                <div>
-                  <h3>Email</h3>
-                  <p>tsumbedzomatloga@gmail.com</p>
-                </div>
-              </div>
-              <div className="info-item">
+                <span>tsumbedzomatloga@gmail.com</span>
+              </li>
+              <li>
                 <i className="bi bi-phone"></i>
-                <div>
-                  <h3>Call</h3>
-                  <p>076 366 4740</p>
-                </div>
-              </div>
+                <span>076 366 4740</span>
+              </li>
+            </ul>
+            <div className="social-menu">
+              <ul>
+                <li>
+                  <a href="https://github.com/Matloga" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <i className="bi bi-github"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/in/matloga-tsumbedzo-a44724343" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i className="bi bi-linkedin"></i>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
 
-          <div className="col-lg-7">
+          <div className="col-lg-7" id="contact-right">
+            <h4>Send a Message</h4>
+            <p>Fill out the form below and I'll get back to you.</p>
             <form
               action={`https://formspree.io/f/${FORMSPREE_ID}`}
               method="POST"
-              className="php-email-form"
               target="_blank"
             >
-              <div className="row gy-4">
+              <div className="row">
                 <div className="col-md-6">
-                  <label htmlFor="name-field">Your Name</label>
-                  <input type="text" name="name" id="name-field" className="input" required />
+                  <label htmlFor="contact-name">Your Name</label>
+                  <input type="text" name="name" id="contact-name" className="form-control" required />
                 </div>
                 <div className="col-md-6">
-                  <label htmlFor="email-field">Your Email</label>
-                  <input type="email" name="email" id="email-field" className="input" required />
+                  <label htmlFor="contact-email">Your Email</label>
+                  <input type="email" name="email" id="contact-email" className="form-control" required />
+                </div>
+                <div className="col-md-6">
+                  <label htmlFor="contact-phone">Phone</label>
+                  <input type="text" name="phone" id="contact-phone" className="form-control" />
+                </div>
+                <div className="col-md-6">
+                  <label htmlFor="contact-subject">Subject</label>
+                  <input type="text" name="subject" id="contact-subject" className="form-control" required />
                 </div>
                 <div className="col-md-12">
-                  <label htmlFor="subject-field">Subject</label>
-                  <input type="text" name="subject" id="subject-field" className="input" required />
+                  <label htmlFor="contact-message">Message</label>
+                  <textarea name="message" id="contact-message" className="form-control" rows="6" required></textarea>
                 </div>
                 <div className="col-md-12">
-                  <label htmlFor="message-field">Message</label>
-                  <textarea name="message" id="message-field" className="textarea" rows="8" required></textarea>
-                </div>
-                <div className="col-md-12 text-center">
-                  <button type="submit" className="btn btn-default">Send Message</button>
+                  <button type="submit" className="btn-general btn-yellow">Send Message</button>
                 </div>
               </div>
             </form>
