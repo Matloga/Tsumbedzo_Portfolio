@@ -975,6 +975,7 @@ img { max-width: 100%; display: block; }
 
 .cert-service-icon {
   display: inline-block;
+  position: relative;
   width: 70px;
   height: 70px;
   border: 3px solid var(--accent);
@@ -984,10 +985,14 @@ img { max-width: 100%; display: block; }
   transition: 0.5s linear;
 }
 
-.cert-service-icon i {
-  line-height: 70px;
-  transform: rotate(-45deg);
-  font-size: 26px;
+.cert-service-icon img {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  object-fit: contain;
 }
 
 .cert-service-box h4 {
