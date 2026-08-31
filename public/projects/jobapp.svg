@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#14213d"/>
+      <stop offset="1" stop-color="#0a0f1f"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg)"/>
+  <!-- briefcase -->
+  <g fill="none" stroke="#fca311" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="170" y="175" width="260" height="130" rx="14"/>
+    <rect x="245" y="145" width="110" height="40" rx="8"/>
+    <line x1="170" y1="230" x2="430" y2="230"/>
+  </g>
+  <circle cx="300" cy="250" r="9" fill="#fff"/>
+  <text x="300" y="345" font-family="Raleway, Arial, sans-serif" font-size="20" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="3">JOB TRACKER</text>
+</svg>

@@ -4,37 +4,55 @@ import { Github } from 'lucide-react';
 const GITHUB_USERNAME = 'Matloga';
 const categories = ['All', 'Web', 'Java', 'AI'];
 
+const PROJECT_IMAGES = {
+  'Tsumbedzo_Portfolio': '/projects/portfolio.svg',
+  'ecommerce-website': '/projects/ecommerce-website.svg',
+  'weather-app': '/projects/weather-app.svg',
+  'todo-list-app': '/projects/todo-list-app.svg',
+  'jobapp': '/projects/jobapp.svg',
+  'challenge-front-end-live': '/projects/challenge-front-end-live.svg',
+  'ChallengeApp': '/projects/ChallengeApp.svg',
+  'Simple-Calculator': '/projects/Simple-Calculator.svg',
+  'banking-machine': '/projects/banking-machine.svg',
+};
+
+function resolveImage(repoName, category) {
+  const named = PROJECT_IMAGES[repoName];
+  if (named) return named;
+  return category === 'Java' ? '/projects/fallback-java.svg' : '/projects/fallback-web.svg';
+}
+
 const fallbackProjects = [
   {
-    id: 'project1',
+    id: 'Tsumbedzo_Portfolio',
     title: 'Tsumbedzo Portfolio',
     description: 'This portfolio website, built with React and Vite.',
     category: 'Web',
     repoUrl: 'https://github.com/Matloga/Tsumbedzo_Portfolio',
     homepage: 'https://tsumbedzo-portfolio.vercel.app',
-    image: 'https://opengraph.githubassets.com/1/Matloga/Tsumbedzo_Portfolio',
+    image: resolveImage('Tsumbedzo_Portfolio', 'Web'),
     stars: 0,
     forks: 0,
   },
   {
-    id: 'project2',
+    id: 'jobapp',
     title: 'jobapp',
     description: 'A job application tracking application.',
     category: 'Java',
     repoUrl: 'https://github.com/Matloga/jobapp',
     homepage: null,
-    image: 'https://opengraph.githubassets.com/1/Matloga/jobapp',
+    image: resolveImage('jobapp', 'Java'),
     stars: 0,
     forks: 0,
   },
   {
-    id: 'project3',
+    id: 'challenge-front-end-live',
     title: 'challenge-front-end-live',
     description: 'A live front-end coding challenge project.',
     category: 'Web',
     repoUrl: 'https://github.com/Matloga/challenge-front-end-live',
     homepage: null,
-    image: 'https://opengraph.githubassets.com/1/Matloga/challenge-front-end-live',
+    image: resolveImage('challenge-front-end-live', 'Web'),
     stars: 0,
     forks: 0,
   },
@@ -54,12 +72,6 @@ function guessCategory(repo) {
   return 'Web';
 }
 
-function handleImageError(e, fallback) {
-  if (fallback && e.target.src !== fallback) {
-    e.target.src = fallback;
-  }
-}
-
 async function fetchProjects() {
   const response = await fetch(
     `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=pushed&per_page=10&type=public`
@@ -69,18 +81,20 @@ async function fetchProjects() {
     .filter((r) => !r.fork && r.name !== 'Tsumbedzo_Portfolio')
     .slice(0, 6);
 
-  return repos.map((repo) => ({
-    id: repo.name,
-    title: cleanName(repo.name),
-    description: repo.description || `${cleanName(repo.name)} — a project by Tsumbedzo Matloga.`,
-    category: guessCategory(repo),
-    repoUrl: repo.html_url,
-    homepage: repo.homepage,
-    image: `https://opengraph.githubassets.com/1/${GITHUB_USERNAME}/${repo.name}`,
-    fallbackImage: `https://via.placeholder.com/600x400/14213d/fca311?text=${encodeURIComponent(repo.name.slice(0, 12))}`,
-    stars: repo.stargazers_count || 0,
-    forks: repo.forks_count || 0,
-  }));
+  return repos.map((repo) => {
+    const category = guessCategory(repo);
+    return {
+      id: repo.name,
+      title: cleanName(repo.name),
+      description: repo.description || `${cleanName(repo.name)} — a project by Tsumbedzo Matloga.`,
+      category,
+      repoUrl: repo.html_url,
+      homepage: repo.homepage,
+      image: resolveImage(repo.name, category),
+      stars: repo.stargazers_count || 0,
+      forks: repo.forks_count || 0,
+    };
+  });
 }
 
 export default function ProjectsSection() {
@@ -146,12 +160,7 @@ export default function ProjectsSection() {
                 data-category={project.category}
               >
                 <div className="portfolio-card">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    loading="lazy"
-                    onError={(e) => handleImageError(e, project.fallbackImage)}
-                  />
+                  <img src={project.image} alt={project.title} loading="lazy" />
                   <div className="portfolio-info">
                     <h4>{project.title}</h4>
                     <p>{project.description}</p>
