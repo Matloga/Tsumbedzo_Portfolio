@@ -1,7 +1,7 @@
 const cards = [
   { icon: 'bi-code-slash', title: 'Software Engineering', desc: 'Building scalable, maintainable applications with Java, full-stack tooling, and clean design.' },
   { icon: 'bi-shield-lock', title: 'Cybersecurity', desc: 'Securing enterprise systems through network defence, threat detection, and anomaly analysis.' },
-  { icon: 'bi-graph-up', title: 'Data-Driven Research', desc: 'Applying analytics to network flows to uncover patterns and detect threats before they strike.' },
+  { icon: 'bi-graph-up', title: 'Data-Driven Research', desc: 'Applying analytics to uncover patterns and detect threats before they strike.' },
 ];
 
 export default function AboutSection() {
@@ -23,9 +23,7 @@ export default function AboutSection() {
               <p>
                 I am a software engineer and cybersecurity enthusiast who believes the same people who
                 build systems should also help protect them. My skills span Java, object-oriented design,
-                and full-stack development — sharpened by network security and threat detection. My MSc
-                research develops a context-aware anomaly detection framework that secures Enterprise
-                Resource Planning (ERP) systems using network flow analytics.
+                and full-stack development — sharpened by network security and threat detection.
               </p>
               <div className="about-details-grid">
                 <div className="about-detail">
