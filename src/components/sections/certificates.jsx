@@ -1,4 +1,4 @@
-const certificates = [
+export const certificates = [
   {
     name: 'AWS Certified Cloud Practitioner',
     iconSrc: '/certifications/aws.svg',
