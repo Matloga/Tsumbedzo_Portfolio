@@ -77,7 +77,7 @@ export default function HeroSection() {
         <div id="home-content-inner">
           <div id="home-heading">
             <h1>Tsumbedzo <span>Matloga</span></h1>
-            <h3>Aspiring Cybersecurity Professional</h3>
+            <h3>Aspiring Software, Network &amp; Security Engineer</h3>
             <div className="typed">
               <h2>
                 {displayText}
