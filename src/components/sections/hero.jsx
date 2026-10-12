@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 const titles = [
   'Software Engineer',
   'Cybersecurity Analyst',
+  'Application Security Engineer',
+  'Network Security Engineer',
   'Security-Focused Developer',
   'Secure Software Architect',
 ];
