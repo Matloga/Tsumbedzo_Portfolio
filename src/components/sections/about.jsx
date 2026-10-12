@@ -1,7 +1,7 @@
 const cards = [
-  { icon: 'bi-code-slash', title: 'Clean Code', desc: 'Writing maintainable, efficient, and well-documented code is my passion.' },
-  { icon: 'bi-lightbulb', title: 'Innovation', desc: 'Always exploring new technologies and creative solutions to complex problems.' },
-  { icon: 'bi-book', title: 'Continuous Learning', desc: 'Committed to growing my skills and staying current with industry trends.' },
+  { icon: 'bi-shield-lock', title: 'Security-Focused', desc: 'Applying threat detection and anomaly analysis to protect enterprise systems.' },
+  { icon: 'bi-lightbulb', title: 'Innovation', desc: 'Exploring new technologies and creative solutions to complex security problems.' },
+  { icon: 'bi-book', title: 'Continuous Learning', desc: 'Pursuing an MSc in Cybersecurity while staying current with industry trends.' },
 ];
 
 export default function AboutSection() {
@@ -21,8 +21,11 @@ export default function AboutSection() {
                 <h2>About <strong>Me</strong></h2>
               </div>
               <p>
-                I am a software engineer with expertise in Java, object-oriented design, and backend development.
-                Skilled in building scalable applications, debugging, and contributing to agile teams.
+                I am a software engineer with a growing focus on cybersecurity. My skills span Java,
+                object-oriented design, and backend development — now sharpened toward network security
+                and threat detection. My MSc research centres on building a context-aware anomaly
+                detection framework to secure Enterprise Resource Planning (ERP) systems using network
+                flow analytics.
               </p>
               <div className="about-details-grid">
                 <div className="about-detail">
@@ -52,6 +55,12 @@ export default function AboutSection() {
                 <div className="about-detail">
                   <i className="bi bi-chevron-right"></i>
                   <div>
+                    <strong>Research:</strong> <span>Network &amp; ERP Security</span>
+                  </div>
+                </div>
+                <div className="about-detail">
+                  <i className="bi bi-chevron-right"></i>
+                  <div>
                     <strong>Experience:</strong> <span>1+ Years</span>
                   </div>
                 </div>
@@ -63,8 +72,9 @@ export default function AboutSection() {
                 </div>
               </div>
               <p className="about-closing">
-                My dedication is to writing clean, efficient, and maintainable code while continuously
-                expanding my knowledge of modern software engineering practices.
+                My dedication is to writing clean, efficient, and secure code while continuously
+                expanding my knowledge of network security, anomaly detection, and modern software
+                engineering practices.
               </p>
             </div>
           </div>

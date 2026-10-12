@@ -1,6 +1,11 @@
 import { useEffect, useState } from 'react';
 
-const titles = ['Software Engineer', 'Software Developer', 'Full Stack Developer'];
+const titles = [
+  'Software Engineer',
+  'Network Security Analyst',
+  'Cybersecurity Professional',
+  'Security Data Scientist',
+];
 
 const backgrounds = [
   { src: '/backgrounds/01-code-screen.jpg', name: 'Code on Screen' },
@@ -72,7 +77,7 @@ export default function HeroSection() {
         <div id="home-content-inner">
           <div id="home-heading">
             <h1>Tsumbedzo <span>Matloga</span></h1>
-            <h3>Aspiring Professional</h3>
+            <h3>Aspiring Cybersecurity Professional</h3>
             <div className="typed">
               <h2>
                 {displayText}
