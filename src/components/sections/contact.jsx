@@ -100,7 +100,7 @@ export default function ContactSection() {
 
           <div className="col-lg-7" id="contact-right">
             <h4>Send a Message</h4>
-            <p>Write your message below, then send it via WhatsApp or SMS — no email needed.</p>
+            <p>Write your message below, then send it via WhatsApp, SMS, or email.</p>
             <form>
               <div className="row">
                 <div className="col-md-6">
