@@ -59,16 +59,22 @@ export default function StatsSection() {
   ]);
 
   useEffect(() => {
-    fetchGitHubStats()
-      .then(({ repos, followers, years }) =>
-        setStats([
-          { icon: 'bi-journal-richtext', end: repos, suffix: '+', label: 'Public Repositories' },
-          { icon: 'bi-people', end: followers, suffix: '+', label: 'GitHub Followers' },
-          { icon: 'bi-award', end: certificates.length, suffix: '', label: 'Certifications' },
-          { icon: 'bi-gear', end: years, suffix: '+', label: 'Years on GitHub' },
-        ])
-      )
-      .catch(() => {});
+    const refresh = () => {
+      fetchGitHubStats()
+        .then(({ repos, followers, years }) =>
+          setStats([
+            { icon: 'bi-journal-richtext', end: repos, suffix: '+', label: 'Public Repositories' },
+            { icon: 'bi-people', end: followers, suffix: '+', label: 'GitHub Followers' },
+            { icon: 'bi-award', end: certificates.length, suffix: '', label: 'Certifications' },
+            { icon: 'bi-gear', end: years, suffix: '+', label: 'Years on GitHub' },
+          ])
+        )
+        .catch(() => {});
+    };
+
+    refresh();
+    const timer = setInterval(refresh, 5 * 60 * 1000);
+    return () => clearInterval(timer);
   }, []);
 
   return (
