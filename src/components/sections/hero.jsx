@@ -4,6 +4,7 @@ const titles = [
   'Software Engineer',
   'Cybersecurity Analyst',
   'Application Security Engineer',
+  'Security Data Scientist',
   'Network Security Engineer',
   'Security-Focused Developer',
   'Secure Software Architect',
