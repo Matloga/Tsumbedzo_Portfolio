@@ -1,7 +1,7 @@
 const cards = [
-  { icon: 'bi-shield-lock', title: 'Security-Focused', desc: 'Applying threat detection and anomaly analysis to protect enterprise systems.' },
-  { icon: 'bi-lightbulb', title: 'Innovation', desc: 'Exploring new technologies and creative solutions to complex security problems.' },
-  { icon: 'bi-book', title: 'Continuous Learning', desc: 'Pursuing an MSc in Cybersecurity while staying current with industry trends.' },
+  { icon: 'bi-code-slash', title: 'Software Engineering', desc: 'Building scalable, maintainable applications with Java, full-stack tooling, and clean design.' },
+  { icon: 'bi-shield-lock', title: 'Cybersecurity', desc: 'Securing enterprise systems through network defence, threat detection, and anomaly analysis.' },
+  { icon: 'bi-graph-up', title: 'Data-Driven Research', desc: 'Applying analytics to network flows to uncover patterns and detect threats before they strike.' },
 ];
 
 export default function AboutSection() {
@@ -21,11 +21,11 @@ export default function AboutSection() {
                 <h2>About <strong>Me</strong></h2>
               </div>
               <p>
-                I am a software engineer with a growing focus on cybersecurity. My skills span Java,
-                object-oriented design, and backend development — now sharpened toward network security
-                and threat detection. My MSc research centres on building a context-aware anomaly
-                detection framework to secure Enterprise Resource Planning (ERP) systems using network
-                flow analytics.
+                I am a software engineer and cybersecurity enthusiast who believes the same people who
+                build systems should also help protect them. My skills span Java, object-oriented design,
+                and full-stack development — sharpened by network security and threat detection. My MSc
+                research develops a context-aware anomaly detection framework that secures Enterprise
+                Resource Planning (ERP) systems using network flow analytics.
               </p>
               <div className="about-details-grid">
                 <div className="about-detail">
@@ -66,9 +66,8 @@ export default function AboutSection() {
                 </div>
               </div>
               <p className="about-closing">
-                My dedication is to writing clean, efficient, and secure code while continuously
-                expanding my knowledge of network security, anomaly detection, and modern software
-                engineering practices.
+                My dedication is to writing clean, efficient, and secure code while expanding my
+                knowledge of network security, data analytics, and modern software engineering practices.
               </p>
             </div>
           </div>
