@@ -1178,6 +1178,44 @@ img { max-width: 100%; display: block; }
   border: 2px solid #fff;
 }
 
+.contact-send-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.contact-send-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-send-btn i {
+  font-size: 16px;
+}
+
+.btn-outline {
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  background-color: transparent;
+}
+
+.btn-outline:hover {
+  color: #fff;
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.contact-inline-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-inline-link:hover {
+  color: var(--accent);
+}
+
 /* ============================================
    FOOTER
    ============================================ */
