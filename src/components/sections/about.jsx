@@ -55,12 +55,6 @@ export default function AboutSection() {
                 <div className="about-detail">
                   <i className="bi bi-chevron-right"></i>
                   <div>
-                    <strong>Research:</strong> <span>Network &amp; ERP Security</span>
-                  </div>
-                </div>
-                <div className="about-detail">
-                  <i className="bi bi-chevron-right"></i>
-                  <div>
                     <strong>Experience:</strong> <span>1+ Years</span>
                   </div>
                 </div>
