@@ -15,7 +15,13 @@ const certificates = [
     name: 'BSc Honours in Computer Science',
     iconSrc: '/certifications/ul-logo.svg',
     description: 'Bachelor of Science Honours in Computer Science from the University of Limpopo.',
-    href: 'https://drive.google.com/file/d/1tsu_748fGVcDXssY8KBmdff0dWjuIYjX/view?usp=drive_link'
+    href: 'https://drive.google.com/file/d/11s4GGbZP4VoVbAe7rmzw3GiC2In6ORIL/view?usp=drive_link'
+  },
+  {
+    name: 'BSc in Mathematical Sciences',
+    iconSrc: '/certifications/ul-logo.svg',
+    description: 'Bachelor of Science in Mathematical Sciences from the University of Limpopo.',
+    href: 'https://drive.google.com/file/d/13cdahTCOiolTKGybBePuGbWn2yB4QBwj/view?usp=drive_link'
   },
   {
     name: 'Class Representative',
