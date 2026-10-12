@@ -1,6 +1,7 @@
 const PHONE_DISPLAY = '076 366 4740';
 const PHONE_E164 = '+27763664740';
 const WHATSAPP_NUMBER = '27763664740';
+const EMAIL = 'tsumbedzomatloga@gmail.com';
 
 function buildMessage(name, subject, message) {
   const parts = [];
@@ -27,6 +28,10 @@ export default function ContactSection() {
 
     if (channel === 'whatsapp') {
       window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
+    } else if (channel === 'email') {
+      const mailSubject = subject || 'Message from your portfolio';
+      const mailBody = `${message}${name ? `\n\n— ${name}` : ''}`;
+      window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
     } else {
       window.location.href = `sms:${PHONE_E164}?body=${encodeURIComponent(text)}`;
     }
@@ -46,6 +51,14 @@ export default function ContactSection() {
               <li>
                 <i className="bi bi-geo-alt"></i>
                 <span>Fourways, South Africa</span>
+              </li>
+              <li>
+                <i className="bi bi-envelope"></i>
+                <span>
+                  <a href={`mailto:${EMAIL}`} className="contact-inline-link">
+                    {EMAIL}
+                  </a>
+                </span>
               </li>
               <li>
                 <i className="bi bi-whatsapp"></i>
@@ -105,6 +118,9 @@ export default function ContactSection() {
                 <div className="col-md-12 contact-send-buttons">
                   <button type="button" className="btn-general btn-yellow contact-send-btn" onClick={handleSend('whatsapp')}>
                     <i className="bi bi-whatsapp"></i> Send via WhatsApp
+                  </button>
+                  <button type="button" className="btn-general btn-outline contact-send-btn" onClick={handleSend('email')}>
+                    <i className="bi bi-envelope"></i> Send via Email
                   </button>
                   <button type="button" className="btn-general btn-outline contact-send-btn" onClick={handleSend('sms')}>
                     <i className="bi bi-chat-dots"></i> Send via SMS
