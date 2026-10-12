@@ -1,13 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#14213d"/>
-      <stop offset="1" stop-color="#0a0f1f"/>
+      <stop offset="0" stop-color="#10172a"/>
+      <stop offset="1" stop-color="#06080f"/>
     </linearGradient>
   </defs>
   <rect width="600" height="400" fill="url(#bg)"/>
-  <!-- checkbox -->
-  <g fill="none" stroke="#fca311" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="520" cy="60" r="130" fill="#38bdf8" opacity="0.07"/>
+  <circle cx="80" cy="360" r="140" fill="#38bdf8" opacity="0.05"/>
+  <g fill="none" stroke="#38bdf8" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
     <rect x="190" y="110" width="240" height="44" rx="10"/>
     <polyline points="210,132 235,152 280,120"/>
   </g>
@@ -16,7 +17,7 @@
     <rect x="190" y="234" width="180" height="34" rx="8"/>
     <rect x="190" y="288" width="210" height="34" rx="8"/>
   </g>
-  <g fill="#fca311" opacity="0.9">
+  <g fill="#38bdf8" opacity="0.9">
     <circle cx="430" cy="197" r="9"/>
     <circle cx="430" cy="251" r="9"/>
     <circle cx="430" cy="305" r="9"/>

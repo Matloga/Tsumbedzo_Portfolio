@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10172a"/>
+      <stop offset="1" stop-color="#06080f"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg)"/>
+  <circle cx="520" cy="60" r="130" fill="#38bdf8" opacity="0.07"/>
+  <circle cx="80" cy="360" r="140" fill="#38bdf8" opacity="0.05"/>
+  <g fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="180" y="85" width="240" height="235" rx="10"/>
+    <line x1="215" y1="140" x2="385" y2="140"/>
+    <line x1="215" y1="175" x2="385" y2="175"/>
+    <line x1="215" y1="210" x2="330" y2="210"/>
+    <path d="M300 84 a60 60 0 0 1 60 58 l-22 6 a40 40 0 0 0 -38 -40 Z"/>
+    <circle cx="384" cy="60" r="10"/>
+  </g>
+  <text x="300" y="352" font-family="Raleway, Arial, sans-serif" font-size="20" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="3">PIZZA BILL</text>
+</svg>

@@ -6,6 +6,18 @@ const categories = ['All', 'Web', 'Java', 'AI'];
 
 const PROJECT_IMAGES = {
   'Tsumbedzo_Portfolio': '/projects/portfolio.svg',
+  'gym-website': '/projects/gym-website.svg',
+  'Matloga': '/projects/matloga.svg',
+  'online-survey-builder': '/projects/online-survey-builder.svg',
+  'image-gallery': '/projects/image-gallery.svg',
+  'notes-app': '/projects/notes-app.svg',
+  'expense-tracker': '/projects/expense-tracker.svg',
+  'event-management-system': '/projects/event-management-system.svg',
+  'social-media-dashboard': '/projects/social-media-dashboard.svg',
+  'blog-website': '/projects/blog-website.svg',
+  'streamly-video-platform': '/projects/streamly-video-platform.svg',
+  'real-time-chat-application': '/projects/real-time-chat-application.svg',
+  'iron-and-blade-barbershop': '/projects/iron-and-blade-barbershop.svg',
   'ecommerce-website': '/projects/ecommerce-website.svg',
   'weather-app': '/projects/weather-app.svg',
   'todo-list-app': '/projects/todo-list-app.svg',
@@ -14,6 +26,11 @@ const PROJECT_IMAGES = {
   'ChallengeApp': '/projects/ChallengeApp.svg',
   'Simple-Calculator': '/projects/Simple-Calculator.svg',
   'banking-machine': '/projects/banking-machine.svg',
+  'DoubleArraySorter': '/projects/DoubleArraySorter.svg',
+  'TaskScheduler': '/projects/TaskScheduler.svg',
+  'PizzaBillGenerator': '/projects/PizzaBillGenerator.svg',
+  'subscription-app': '/projects/subscription-app.svg',
+  'Bank-Management-System-Java': '/projects/Bank-Management-System-Java.svg',
 };
 
 function resolveImage(repoName, category) {

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10172a"/>
+      <stop offset="1" stop-color="#06080f"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg)"/>
+  <circle cx="520" cy="60" r="130" fill="#38bdf8" opacity="0.07"/>
+  <circle cx="80" cy="360" r="140" fill="#38bdf8" opacity="0.05"/>
+  <g fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="85" y1="220" x2="515" y2="220"/>
+    <rect x="130" y="175" width="45" height="90" rx="9"/>
+    <rect x="425" y="175" width="45" height="90" rx="9"/>
+    <rect x="85" y="192" width="34" height="56" rx="8"/>
+    <rect x="481" y="192" width="34" height="56" rx="8"/>
+  </g>
+  <text x="300" y="342" font-family="Raleway, Arial, sans-serif" font-size="20" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="3">GYM WEBSITE</text>
+</svg>

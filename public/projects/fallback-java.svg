@@ -1,18 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#14213d"/>
-      <stop offset="1" stop-color="#0a0f1f"/>
+      <stop offset="0" stop-color="#10172a"/>
+      <stop offset="1" stop-color="#06080f"/>
     </linearGradient>
   </defs>
   <rect width="600" height="400" fill="url(#bg)"/>
-  <circle cx="530" cy="60" r="120" fill="#fca311" opacity="0.08"/>
-  <circle cx="70" cy="360" r="140" fill="#fca311" opacity="0.06"/>
-  <!-- java cup -->
-  <g fill="none" stroke="#fca311" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M180 170 h220 v55 c0 70-45 105-110 105 s-110-35-110-105 z"/>
-    <path d="M400 185 h18 c30 0 42 18 42 40 0 22-14 40-44 40 h-16"/>
+  <circle cx="520" cy="60" r="130" fill="#38bdf8" opacity="0.07"/>
+  <circle cx="80" cy="360" r="140" fill="#38bdf8" opacity="0.05"/>
+  <g fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="160" y="130" width="280" height="180" rx="12"/>
+    <line x1="160" y1="190" x2="440" y2="190"/>
+    <line x1="200" y1="130" x2="200" y2="310"/>
+    <line x1="240" y1="130" x2="240" y2="310"/>
+    <line x1="280" y1="130" x2="280" y2="310"/>
+    <line x1="320" y1="130" x2="320" y2="310"/>
+    <line x1="360" y1="130" x2="360" y2="310"/>
+    <line x1="400" y1="130" x2="400" y2="310"/>
   </g>
-  <path d="M245 150 c0-20 20-20 20-40 M295 150 c0-20 20-20 20-40 M345 150 c0-20 20-20 20-40" stroke="#fff" stroke-width="6" fill="none" opacity="0.6" stroke-linecap="round"/>
-  <text x="300" y="345" font-family="Raleway, Arial, sans-serif" font-size="18" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="2">JAVA PROJECT</text>
+  <text x="300" y="355" font-family="Raleway, Arial, sans-serif" font-size="20" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="3">JAVA PROJECT</text>
 </svg>

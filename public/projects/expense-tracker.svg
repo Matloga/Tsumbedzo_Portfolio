@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10172a"/>
+      <stop offset="1" stop-color="#06080f"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg)"/>
+  <circle cx="520" cy="60" r="130" fill="#38bdf8" opacity="0.07"/>
+  <circle cx="80" cy="360" r="140" fill="#38bdf8" opacity="0.05"/>
+  <g fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="150" y="110" width="300" height="170" rx="14"/>
+    <line x1="150" y1="178" x2="450" y2="178"/>
+    <circle cx="208" cy="240" r="17"/>
+    <path d="M300 262 C360 240 385 215 425 195"/>
+    <path d="M425 195 l-42 -16 l4 40"/>
+  </g>
+  <text x="300" y="347" font-family="Raleway, Arial, sans-serif" font-size="20" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="3">EXPENSE TRACKER</text>
+</svg>

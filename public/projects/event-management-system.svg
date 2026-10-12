@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10172a"/>
+      <stop offset="1" stop-color="#06080f"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg)"/>
+  <circle cx="520" cy="60" r="130" fill="#38bdf8" opacity="0.07"/>
+  <circle cx="80" cy="360" r="140" fill="#38bdf8" opacity="0.05"/>
+  <g fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="155" y="105" width="290" height="205" rx="12"/>
+    <line x1="155" y1="160" x2="445" y2="160"/>
+    <circle cx="213" cy="132" r="9"/>
+    <circle cx="387" cy="132" r="9"/>
+    <rect x="185" y="185" width="125" height="62" rx="8"/>
+    <path d="M280 275 l55 -58 l0 40 l58 -55"/>
+  </g>
+  <text x="300" y="352" font-family="Raleway, Arial, sans-serif" font-size="20" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="3">EVENT SYSTEM</text>
+</svg>
