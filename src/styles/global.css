@@ -1,26 +1,26 @@
 /* ============================================
    GLOBAL STYLES — Kingsley JM Tech Inspired
-   Colors: #fca311 (accent), #14213d (dark), #e5e5e5 (alt)
+   Colors: #38bdf8 (accent), #0a1020 (dark), #0f1626 (alt)
    Fonts: Raleway (headings), Open Sans (body)
    ============================================ */
 
 :root {
-  --accent: #fca311;
-  --dark: #14213d;
-  --dark-alt: #212226;
-  --light: #ffffff;
-  --light-alt: #f4f4f4;
-  --gray: #e5e5e5;
-  --text: #212226;
-  --text-muted: #6c757d;
+  --accent: #38bdf8;
+  --dark: #06080f;
+  --dark-alt: #10172a;
+  --light: #0a1020;
+  --light-alt: #0f1626;
+  --gray: #192134;
+  --text: #ffffff;
+  --text-muted: #aeb9cc;
 }
 
 .dark {
-  --light: #0d1b2a;
-  --light-alt: #1b2838;
-  --gray: #2a3a4a;
-  --text: #e0e0e0;
-  --text-muted: #8899aa;
+  --light: #06080f;
+  --light-alt: #0f1626;
+  --gray: #232e49;
+  --text: #ffffff;
+  --text-muted: #aeb9cc;
 }
 
 *, *::before, *::after {
@@ -303,9 +303,9 @@ img { max-width: 100%; display: block; }
   color: var(--accent);
 }
 
-/* White nav on scroll */
+/* Nav on scroll */
 .white-nav-top {
-  background: #fff;
+  background: var(--dark-alt);
   padding: 10px 0;
   box-shadow: 0 8px 6px -9px #999;
 }
@@ -329,7 +329,7 @@ img { max-width: 100%; display: block; }
 
 .white-nav-top .theme-toggle-nav {
   color: var(--text);
-  border-color: rgba(0,0,0,0.2);
+  border-color: rgba(255,255,255,0.25);
 }
 
 .white-nav-top .theme-toggle-nav:hover {
@@ -496,7 +496,7 @@ img { max-width: 100%; display: block; }
    ABOUT
    ============================================ */
 .about-section {
-  background: #fff;
+  background: var(--light);
 }
 
 .about-left {
@@ -552,7 +552,7 @@ img { max-width: 100%; display: block; }
 }
 
 .about-card {
-  background: #fff;
+  background: var(--gray);
   padding: 60px 30px;
   text-align: center;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -680,7 +680,7 @@ img { max-width: 100%; display: block; }
    SKILLS
    ============================================ */
 .skills-section {
-  background: #fff;
+  background: var(--light);
 }
 
 .service-box {
@@ -708,7 +708,7 @@ img { max-width: 100%; display: block; }
   transition: all 0.4s ease;
   text-align: center;
   line-height: 80px;
-  background-color: #fff;
+  background-color: var(--gray);
 }
 
 .service-icon img {
@@ -724,7 +724,7 @@ img { max-width: 100%; display: block; }
 .service-box:hover .service-icon {
   background-color: var(--accent);
   border-color: var(--accent);
-  box-shadow: 0 0 20px rgba(252,163,17,0.4);
+  box-shadow: 0 0 20px rgba(56,189,248,0.4);
   transform: rotate(45deg) scale(1.1);
 }
 .service-box:hover .service-icon img {
@@ -829,7 +829,7 @@ img { max-width: 100%; display: block; }
    PROJECTS
    ============================================ */
 .projects-section {
-  background: #fff;
+  background: var(--light);
 }
 
 .portfolio-filters {
@@ -869,7 +869,7 @@ img { max-width: 100%; display: block; }
   position: relative;
   border-radius: 6px;
   overflow: hidden;
-  background: #fff;
+  background: var(--gray);
   box-shadow: 0 2px 15px rgba(0,0,0,0.08);
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -964,7 +964,7 @@ img { max-width: 100%; display: block; }
 .cert-service-box {
   display: block;
   padding: 40px 25px;
-  background: #fff;
+  background: var(--gray);
   text-align: center;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   transition: all 500ms ease-in-out;
@@ -1158,7 +1158,7 @@ img { max-width: 100%; display: block; }
   border: none;
   border-radius: 4px;
   margin-bottom: 12px;
-  background: #fff;
+  background: var(--gray);
 }
 
 #contact-right .form-control:focus {
@@ -1422,7 +1422,7 @@ img { max-width: 100%; display: block; }
 .dark .about-card:hover p { color: #fff; }
 
 .dark .about-card-dark {
-  background: #0a1628;
+  background: var(--dark-alt);
   border: 1px solid var(--gray);
 }
 
@@ -1477,7 +1477,7 @@ img { max-width: 100%; display: block; }
 
 /* Contact form */
 .dark #contact-right {
-  background: #0a1628;
+  background: var(--dark-alt);
   border: 1px solid var(--gray);
 }
 .dark #contact-right label { color: var(--text); }
@@ -1489,7 +1489,7 @@ img { max-width: 100%; display: block; }
 /* Scroll to top */
 .dark .back-to-top {
   background: var(--accent);
-  box-shadow: 0 4px 12px rgba(252, 163, 17, 0.4);
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
 }
 
 .dark .white-nav-top {
