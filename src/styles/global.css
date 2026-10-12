@@ -451,7 +451,16 @@ img { max-width: 100%; display: block; }
   font-weight: 100;
   text-transform: uppercase;
   font-size: 28px;
-  margin: 16px 0 20px;
+  margin: 16px 0 12px;
+}
+
+.hero-tagline {
+  color: var(--text-muted);
+  font-size: 16px;
+  font-weight: 300;
+  max-width: 640px;
+  margin: 0 auto 12px;
+  line-height: 1.6;
 }
 
 .typed h2 {
@@ -489,6 +498,7 @@ img { max-width: 100%; display: block; }
 @media (max-width: 767px) {
   #home-heading h1 { font-size: 32px; }
   #home-heading h3 { font-size: 20px; }
+  .hero-tagline { font-size: 14px; }
   .typed h2 { font-size: 28px; }
 }
 

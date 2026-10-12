@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 
 const titles = [
   'Software Engineer',
-  'Network Security Analyst',
-  'Cybersecurity Professional',
-  'Security Data Scientist',
+  'Cybersecurity Analyst',
+  'Security-Focused Developer',
+  'Secure Software Architect',
 ];
 
 const backgrounds = [
@@ -77,7 +77,11 @@ export default function HeroSection() {
         <div id="home-content-inner">
           <div id="home-heading">
             <h1>Tsumbedzo <span>Matloga</span></h1>
-            <h3>Aspiring Software, Network &amp; Security Engineer</h3>
+            <h3>Bridging Software Engineering &amp; Cybersecurity</h3>
+            <p className="hero-tagline">
+              Engineering secure-by-design software with a defence-first mindset — closing the gap
+              between building systems and protecting them.
+            </p>
             <div className="typed">
               <h2>
                 {displayText}
